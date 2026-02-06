@@ -10,14 +10,12 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v3
 
-      - name: Deploy via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy to Fasthosts via SFTP
+        uses: appleboy/scp-action@master
         with:
-          username: 'csh3391309'
-          server: 'sftp.ashadu.me'
+          host: sftp.ashadu.me
+          username: csh3391309
+          password: ${{ secrets.FTP_PASSWORD }}
           port: 22
-          ssh_private_key: ${{ secrets.FTP_PASSWORD }} 
-          # Note: Even though it says 'private_key', this action accepts a password here.
-          local_path: './*'
-          remote_path: '/htdocs'
-          delete_remote_files: false
+          source: "*"
+          target: "htdocs"

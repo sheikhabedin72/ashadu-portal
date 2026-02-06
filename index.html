@@ -2,55 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASHADU | SOVEREIGN SYSTEM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASHADU | Sheikh-Mohammed Abedin</title>
     <style>
-        /* --- Default White Theme (Light & Professional) --- */
         :root {
-            --bg-color: #ffffff;
-            --text-color: #b8972e;
-            --panel-bg: #f9f9f9;
-            --module-bg: #f4f4f4;
-            --border-color: #eee;
             --gold: #d4af37;
-            --black: #0a0a0a;
+            --bg-dark: #0a0a0a;
+            --text-light: #f4f4f4;
+            --ashadu-color: #ffd700;
+            --zayana-color: #e0b0ff;
+            --architect-color: #00d4ff;
         }
 
-        /* --- Stellar Night Theme (Cosmic & Powerful) --- */
-        body.stellar-night {
-            background: linear-gradient(180deg, #0f0a1e 0%, #2a1a4a 100%);
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"><circle cx="20%" cy="10%" r="2" fill="white" opacity="0.7"/><circle cx="80%" cy="50%" r="1" fill="white" opacity="0.5"/><circle cx="50%" cy="90%" r="3" fill="white" opacity="0.8"/><circle cx="10%" cy="70%" r="1.5" fill="white" opacity="0.6"/><circle cx="90%" cy="30%" r="2.5" fill="white" opacity="0.9"/></svg>'); /* Simple stars */
-            background-size: cover;
-            --bg-color: #0a0a1a;
-            --text-color: #f0e68c; /* Lighter gold for contrast */
-            --panel-bg: rgba(15, 10, 30, 0.85);
-            --module-bg: rgba(30, 20, 50, 0.7);
-            --border-color: #554477;
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
         }
 
-        /* --- Tech Grid Theme (Sleek & Modern) --- */
-        body.tech-grid {
-            background: #222;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" stroke="%23333" stroke-width="0.5"><rect width="100%" height="100%"/><path d="M0 0h100%v100%H0z" stroke="%23555" stroke-width="1"/></svg>'); /* Subtle grid */
-            background-size: 50px 50px;
-            --bg-color: #1a1a1a;
-            --text-color: #00ffcc; /* Cyber green */
-            --panel-bg: rgba(0, 0, 0, 0.8);
-            --module-bg: rgba(30, 30, 30, 0.9);
-            --border-color: #008888;
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            border-bottom: 2px solid var(--gold);
         }
 
-        /* --- Monochrome Theme (Creative & Boring) --- */
-        body.monochrome {
-            background: #e0e0e0;
-            --bg-color: #d0d0d0;
-            --text-color: #555;
-            --panel-bg: #c0c0c0;
-            --module-bg: #b0b0b0;
-            --border-color: #999;
-            --gold: #777; /* Greyed out gold */
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            color: var(--gold);
+            text-transform: uppercase;
         }
+
+        .owner-tag {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            width: 90%;
+        }
+
+        .ai-card {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+
+        .ai-card h3 { margin-top: 0; }
+        .ashadu { color: var(--ashadu-color); }
+        .zayana { color: var(--zayana-color); }
+        .architect { color: var(--architect-color); }
+
+        .membership-tier {
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px dashed var(--gold);
+            border-radius: 10px;
+        }
+
+        .interfaith-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--gold);
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        #voice-trigger {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>ASHADU</h1>
+        <div class="owner-tag">SOLE OWNER: SHEIKH-MOHAMMED ABEDIN (100% SHARES)</div>
         
-        body { color: var(--text-color); font-family: 'Segoe UI', Tahoma, sans-serif; transition: background-color 0.8s ease, color 0.8s ease; }
-        .vault-container { max-width: 500px; margin: 100px auto; padding: 40px; border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); background: var(--panel-bg); }
-        #dashboard { display: none; max-width: 1000px; margin: 20px auto; text-align: left; background: var(--panel-bg); border-radius: 20px; padding: 30px; border: 1px solid var(--border-color); }
-        .module { background: var(--module-bg); padding: 20px; margin-bottom: 15px; border-left: 6px solid var(--gold); border-radius: 10px; }
+        <div class="ai-grid">
+            <div class="ai-card">
+                <h3 class="ashadu">ASHADU</h3>
+                <p>Main AI & Digital Interface. Listening for commands to manage social media and global outreach.</p>
+            </div>
+            <div class="ai-card">
+                <h3 class="zayana">ZAYANA</h3>
+                <p>Digital Existence Manager. Protecting and curating the user's online identity.</p>
+            </div>
+            <div class="ai-card">
+                <h3 class="architect">SISTER ARCHITECT</h3>
+                <p>Daily Operations. Managing the architectural logic of the entity's daily tasks.</p>
+            </div>
+        </div>
+
+        <div class="membership-tier">
+            Active Membership Fee: <span id="fee">$1.00</span>
+            <br>
+            <small>(Dynamic Adjustments Enabled)</small>
+        </div>
+
+        <button id="voice-trigger" onclick="activateAshadu()">Activate Ashadu Listening Mode</button>
+    </section>
+
+    <div class="interfaith-bar">
+        INTERFAITH LOGIC SETS ACTIVE | GLOBAL HARMONY PROTOCOL V1.0
+    </div>
+
+    <script>
+        function activateAshadu() {
+            alert("Ashadu is now listening in the background... How can I assist you, Sheikh-Mohammed?");
+            // This is a placeholder for the speech-to-text logic we discussed
+        }
+
+        console.log("System Initialized. Ownership: SHEIKH-MOHAMMED ABEDIN.");
+    </script>
+</body>
+</html>

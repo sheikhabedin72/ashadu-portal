@@ -2,83 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ashadu | sovereign vault</title>
+    <title>ASHADU | SOVEREIGN SYSTEM</title>
     <style>
-        body { background-color: #ffffff; color: #b8972e; font-family: 'Helvetica', sans-serif; text-align: center; padding: 50px; }
-        .vault-container { max-width: 450px; margin: auto; padding: 40px; border: 1px solid #eee; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .logo { width: 200px; margin-bottom: 20px; }
-        input { width: 80%; padding: 12px; margin: 10px 0; border: 1px solid #d4af37; border-radius: 5px; text-align: center; }
-        button { background: #d4af37; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 80%; }
-        
-        #zayana-zone { display: none; max-width: 800px; margin: auto; text-align: left; padding: 30px; border: 2px solid #d4af37; border-radius: 15px; background: #fffdf9; }
-        .ai-card { background: #f4f4f4; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #d4af37; }
-        .fee-control { background: #000; color: #d4af37; padding: 15px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; }
-        .footer { font-size: 10px; color: #aaa; margin-top: 30px; text-transform: uppercase; }
+        :root { --gold: #d4af37; --black: #0a0a0a; --white: #ffffff; }
+        body { background: var(--white); color: var(--gold); font-family: 'Segoe UI', Tahoma, sans-serif; transition: 0.5s; }
+        .vault-container { max-width: 500px; margin: 100px auto; padding: 40px; border: 1px solid #eee; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+        #dashboard { display: none; max-width: 1000px; margin: 20px auto; text-align: left; }
+        .module { background: #f9f9f9; padding: 20px; margin-bottom: 15px; border-left: 6px solid var(--gold); border-radius: 10px; }
+        .status { float: right; font-size: 12px; text-transform: uppercase; color: green; }
+        button { background: var(--gold); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        input[type="text"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .ledger-box { background: var(--black); color: var(--gold); padding: 20px; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <div id="vault-entrance" class="vault-container">
-        <img src="logo.png" alt="ASHADU" class="logo" onerror="this.style.border='1px solid #d4af37'; this.style.padding='10px'">
+        <img src="logo.png" alt="ASHADU" style="width:150px; margin-bottom:20px;">
         <h1>THE VAULT</h1>
-        <input type="password" id="directorKey" placeholder="••••••••">
-        <br>
-        <button onclick="unlockZayana()">VERIFY OWNERSHIP</button>
-        <div class="footer">100% OWNERSHIP: SHEIKH-MOHAMMED ABEDIN</div>
+        <p>Director Identity Verification</p>
+        <input type="password" id="directorKey" placeholder="••••••••" style="text-align:center; width:80%;">
+        <br><br>
+        <button onclick="activateSystem()">VERIFY OWNERSHIP</button>
+        <p style="font-size:10px; margin-top:20px;">100% EQUITY OWNER: SHEIKH-MOHAMMED ABEDIN</p>
     </div>
 
-    <div id="zayana-zone">
-        <h2 style="color: #000;">Sovereign Control Panel</h2>
-        <p>Director: <strong>SHEIKH-MOHAMMED ABEDIN</strong></p>
+    <div id="dashboard">
+        <h2>Sovereign System: Ashadu, Zayana, & Sister Architect</h2>
         
-        <div class="ai-card">
-            <h3>Zayana: Digital Existence</h3>
-            <p>Managing legacy and social presence across TikTok, YouTube, & Facebook.</p>
-            <input type="text" id="socialPost" placeholder="Type message for Zayana to broadcast..." style="width:90%; text-align:left;">
-            <button onclick="postSocial()" style="width: auto; margin-top:10px;">Post to Worldwide Web</button>
+        <div class="module">
+            <span class="status">Ashadu Running</span>
+            <h3>1. Device Navigator & Speech Engine</h3>
+            <p>Ashadu is listening for commands. Browse local device files or use Voice-to-Email.</p>
+            <button onclick="startVoice()">ACTIVATE SPEECH-TO-TEXT</button>
+            <button onclick="browseFiles()">BROWSE LOCAL DEVICE</button>
         </div>
 
-        <div class="ai-card">
-            <h3>Sister Architect: Daily Operations</h3>
-            <p>Interfaith Logic Manifest: <strong>Active</strong>.</p>
-            <div class="fee-control">
-                <span>Global Membership Fee:</span>
-                <div>
-                    <button onclick="adjustFee(-0.1)" style="width: 40px; padding: 5px;">-</button>
-                    <span id="currentFee" style="font-size: 20px; margin: 0 15px;">$1.00</span>
-                    <button onclick="adjustFee(0.1)" style="width: 40px; padding: 5px;">+</button>
-                </div>
+        <div class="module">
+            <span class="status">Zayana Syncing</span>
+            <h3>2. Global Social Synchronizer</h3>
+            <p>Post to Facebook, Instagram, TikTok, and YouTube simultaneously.</p>
+            <input type="text" id="globalPost" placeholder="Enter visionary content for the Worldwide Web...">
+            <button onclick="syncPost()">BROADCAST TO ALL PLATFORMS</button>
+        </div>
+
+        <div class="module">
+            <span class="status">Sister Architect Active</span>
+            <h3>3. Interfaith Logic & Fee Management</h3>
+            <p>Interfaith Logic Sets Integrated. Set Global Membership Fee below.</p>
+            <div style="display:flex; align-items:center;">
+                <button onclick="adjFee(-0.1)">-</button>
+                <h1 id="feeDisp" style="margin: 0 20px;">$1.00</h1>
+                <button onclick="adjFee(0.1)">+</button>
             </div>
-            <p><small>*Fees are user-adjustable per Director's mandate.</small></p>
         </div>
 
-        <button onclick="location.reload()" style="background:#000; width: auto; margin-top: 20px;">Lock Vault</button>
+        <div class="ledger-box">
+            <h3>4. Official Shareholder Ledger</h3>
+            <p><strong>Entity Owner:</strong> SHEIKH-MOHAMMED ABEDIN</p>
+            <p><strong>Shareholding:</strong> 100% Total Ownership</p>
+            <p><strong>Intellectual Property:</strong> Protected & Copyrighted</p>
+        </div>
+
+        <br>
+        <button onclick="location.reload()" style="background:red;">LOCK SYSTEM</button>
     </div>
 
     <script>
-        let fee = 1.00;
+        let currentFee = 1.00;
 
-        function unlockZayana() {
+        function activateSystem() {
             const key = document.getElementById('directorKey').value;
-            if (key === "MASTER_KEY_2026") {
+            if(key === "MASTER_KEY_2026") {
                 document.getElementById('vault-entrance').style.display = 'none';
-                document.getElementById('zayana-zone').style.display = 'block';
-                document.body.style.backgroundColor = "#f0f0f0";
-            } else {
-                alert("Identity not verified.");
-            }
+                document.getElementById('dashboard').style.display = 'block';
+                document.body.style.background = "#ffffff";
+            } else { alert("Access Denied."); }
         }
 
-        function postSocial() {
-            const msg = document.getElementById('socialPost').value;
-            alert("Zayana is broadcasting to global platforms: " + msg);
+        function adjFee(val) {
+            currentFee = Math.max(0, currentFee + val);
+            document.getElementById('feeDisp').innerText = "$" + currentFee.toFixed(2);
         }
 
-        function adjustFee(amount) {
-            fee = Math.max(0, fee + amount);
-            document.getElementById('currentFee').innerText = "$" + fee.toFixed(2);
+        function syncPost() {
+            const content = document.getElementById('globalPost').value;
+            alert("Zayana is broadcasting to TikTok, YouTube, & FB: " + content);
         }
+
+        function startVoice() { alert("Ashadu: Microphone initialized. Listening for command..."); }
+        function browseFiles() { alert("Ashadu: Accessing local directories... Listing files..."); }
     </script>
-
 </body>
 </html>

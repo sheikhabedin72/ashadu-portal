@@ -4,94 +4,53 @@
     <meta charset="UTF-8">
     <title>ASHADU | SOVEREIGN SYSTEM</title>
     <style>
-        :root { --gold: #d4af37; --black: #0a0a0a; --white: #ffffff; }
-        body { background: var(--white); color: var(--gold); font-family: 'Segoe UI', Tahoma, sans-serif; transition: 0.5s; }
-        .vault-container { max-width: 500px; margin: 100px auto; padding: 40px; border: 1px solid #eee; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-        #dashboard { display: none; max-width: 1000px; margin: 20px auto; text-align: left; }
-        .module { background: #f9f9f9; padding: 20px; margin-bottom: 15px; border-left: 6px solid var(--gold); border-radius: 10px; }
-        .status { float: right; font-size: 12px; text-transform: uppercase; color: green; }
-        button { background: var(--gold); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        input[type="text"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
-        .ledger-box { background: var(--black); color: var(--gold); padding: 20px; border-radius: 10px; }
-    </style>
-</head>
-<body>
+        /* --- Default White Theme (Light & Professional) --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #b8972e;
+            --panel-bg: #f9f9f9;
+            --module-bg: #f4f4f4;
+            --border-color: #eee;
+            --gold: #d4af37;
+            --black: #0a0a0a;
+        }
 
-    <div id="vault-entrance" class="vault-container">
-        <img src="logo.png" alt="ASHADU" style="width:150px; margin-bottom:20px;">
-        <h1>THE VAULT</h1>
-        <p>Director Identity Verification</p>
-        <input type="password" id="directorKey" placeholder="••••••••" style="text-align:center; width:80%;">
-        <br><br>
-        <button onclick="activateSystem()">VERIFY OWNERSHIP</button>
-        <p style="font-size:10px; margin-top:20px;">100% EQUITY OWNER: SHEIKH-MOHAMMED ABEDIN</p>
-    </div>
+        /* --- Stellar Night Theme (Cosmic & Powerful) --- */
+        body.stellar-night {
+            background: linear-gradient(180deg, #0f0a1e 0%, #2a1a4a 100%);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"><circle cx="20%" cy="10%" r="2" fill="white" opacity="0.7"/><circle cx="80%" cy="50%" r="1" fill="white" opacity="0.5"/><circle cx="50%" cy="90%" r="3" fill="white" opacity="0.8"/><circle cx="10%" cy="70%" r="1.5" fill="white" opacity="0.6"/><circle cx="90%" cy="30%" r="2.5" fill="white" opacity="0.9"/></svg>'); /* Simple stars */
+            background-size: cover;
+            --bg-color: #0a0a1a;
+            --text-color: #f0e68c; /* Lighter gold for contrast */
+            --panel-bg: rgba(15, 10, 30, 0.85);
+            --module-bg: rgba(30, 20, 50, 0.7);
+            --border-color: #554477;
+        }
 
-    <div id="dashboard">
-        <h2>Sovereign System: Ashadu, Zayana, & Sister Architect</h2>
+        /* --- Tech Grid Theme (Sleek & Modern) --- */
+        body.tech-grid {
+            background: #222;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" stroke="%23333" stroke-width="0.5"><rect width="100%" height="100%"/><path d="M0 0h100%v100%H0z" stroke="%23555" stroke-width="1"/></svg>'); /* Subtle grid */
+            background-size: 50px 50px;
+            --bg-color: #1a1a1a;
+            --text-color: #00ffcc; /* Cyber green */
+            --panel-bg: rgba(0, 0, 0, 0.8);
+            --module-bg: rgba(30, 30, 30, 0.9);
+            --border-color: #008888;
+        }
+
+        /* --- Monochrome Theme (Creative & Boring) --- */
+        body.monochrome {
+            background: #e0e0e0;
+            --bg-color: #d0d0d0;
+            --text-color: #555;
+            --panel-bg: #c0c0c0;
+            --module-bg: #b0b0b0;
+            --border-color: #999;
+            --gold: #777; /* Greyed out gold */
+        }
         
-        <div class="module">
-            <span class="status">Ashadu Running</span>
-            <h3>1. Device Navigator & Speech Engine</h3>
-            <p>Ashadu is listening for commands. Browse local device files or use Voice-to-Email.</p>
-            <button onclick="startVoice()">ACTIVATE SPEECH-TO-TEXT</button>
-            <button onclick="browseFiles()">BROWSE LOCAL DEVICE</button>
-        </div>
-
-        <div class="module">
-            <span class="status">Zayana Syncing</span>
-            <h3>2. Global Social Synchronizer</h3>
-            <p>Post to Facebook, Instagram, TikTok, and YouTube simultaneously.</p>
-            <input type="text" id="globalPost" placeholder="Enter visionary content for the Worldwide Web...">
-            <button onclick="syncPost()">BROADCAST TO ALL PLATFORMS</button>
-        </div>
-
-        <div class="module">
-            <span class="status">Sister Architect Active</span>
-            <h3>3. Interfaith Logic & Fee Management</h3>
-            <p>Interfaith Logic Sets Integrated. Set Global Membership Fee below.</p>
-            <div style="display:flex; align-items:center;">
-                <button onclick="adjFee(-0.1)">-</button>
-                <h1 id="feeDisp" style="margin: 0 20px;">$1.00</h1>
-                <button onclick="adjFee(0.1)">+</button>
-            </div>
-        </div>
-
-        <div class="ledger-box">
-            <h3>4. Official Shareholder Ledger</h3>
-            <p><strong>Entity Owner:</strong> SHEIKH-MOHAMMED ABEDIN</p>
-            <p><strong>Shareholding:</strong> 100% Total Ownership</p>
-            <p><strong>Intellectual Property:</strong> Protected & Copyrighted</p>
-        </div>
-
-        <br>
-        <button onclick="location.reload()" style="background:red;">LOCK SYSTEM</button>
-    </div>
-
-    <script>
-        let currentFee = 1.00;
-
-        function activateSystem() {
-            const key = document.getElementById('directorKey').value;
-            if(key === "MASTER_KEY_2026") {
-                document.getElementById('vault-entrance').style.display = 'none';
-                document.getElementById('dashboard').style.display = 'block';
-                document.body.style.background = "#ffffff";
-            } else { alert("Access Denied."); }
-        }
-
-        function adjFee(val) {
-            currentFee = Math.max(0, currentFee + val);
-            document.getElementById('feeDisp').innerText = "$" + currentFee.toFixed(2);
-        }
-
-        function syncPost() {
-            const content = document.getElementById('globalPost').value;
-            alert("Zayana is broadcasting to TikTok, YouTube, & FB: " + content);
-        }
-
-        function startVoice() { alert("Ashadu: Microphone initialized. Listening for command..."); }
-        function browseFiles() { alert("Ashadu: Accessing local directories... Listing files..."); }
-    </script>
-</body>
-</html>
+        body { color: var(--text-color); font-family: 'Segoe UI', Tahoma, sans-serif; transition: background-color 0.8s ease, color 0.8s ease; }
+        .vault-container { max-width: 500px; margin: 100px auto; padding: 40px; border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); background: var(--panel-bg); }
+        #dashboard { display: none; max-width: 1000px; margin: 20px auto; text-align: left; background: var(--panel-bg); border-radius: 20px; padding: 30px; border: 1px solid var(--border-color); }
+        .module { background: var(--module-bg); padding: 20px; margin-bottom: 15px; border-left: 6px solid var(--gold); border-radius: 10px; }

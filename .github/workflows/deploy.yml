@@ -14,10 +14,8 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.FTP_PASSWORD }}
-          # The -e 'ssh -o StrictHostKeyChecking=no' is the "Sovereign Key" to bypass security prompts
           ARGS: "-rlgoDzvc -i --delete -e 'ssh -o StrictHostKeyChecking=no'"
           SOURCE: "/"
           REMOTE_HOST: ${{ secrets.FTP_SERVER }}
           REMOTE_USER: ${{ secrets.FTP_USERNAME }}
-          # Removed the first slash to target your specific folder correctly
           TARGET: "htdocs/"

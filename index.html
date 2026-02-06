@@ -10,9 +10,9 @@
         input { width: 80%; padding: 12px; margin: 10px 0; border: 1px solid #d4af37; border-radius: 5px; text-align: center; }
         button { background: #d4af37; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 80%; }
         
-        /* ZAYANA MANAGEMENT ZONE - Initially Hidden */
-        #zayana-zone { display: none; max-width: 700px; margin: auto; text-align: left; padding: 30px; border: 2px solid #d4af37; border-radius: 15px; background: #fffdf9; }
+        #zayana-zone { display: none; max-width: 800px; margin: auto; text-align: left; padding: 30px; border: 2px solid #d4af37; border-radius: 15px; background: #fffdf9; }
         .ai-card { background: #f4f4f4; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #d4af37; }
+        .fee-control { background: #000; color: #d4af37; padding: 15px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; }
         .footer { font-size: 10px; color: #aaa; margin-top: 30px; text-transform: uppercase; }
     </style>
 </head>
@@ -21,7 +21,6 @@
     <div id="vault-entrance" class="vault-container">
         <img src="logo.png" alt="ASHADU" class="logo" onerror="this.style.border='1px solid #d4af37'; this.style.padding='10px'">
         <h1>THE VAULT</h1>
-        <p>Enter Director Key</p>
         <input type="password" id="directorKey" placeholder="••••••••">
         <br>
         <button onclick="unlockZayana()">VERIFY OWNERSHIP</button>
@@ -33,43 +32,51 @@
         <p>Director: <strong>SHEIKH-MOHAMMED ABEDIN</strong></p>
         
         <div class="ai-card">
-            <h3>Zayana</h3>
-            <p>Status: <strong>Managing Digital Existence</strong></p>
-            <input type="text" id="socialPost" placeholder="Type message to broadcast to TikTok, YouTube, & more..." style="width:90%; text-align:left;">
+            <h3>Zayana: Digital Existence</h3>
+            <p>Managing legacy and social presence across TikTok, YouTube, & Facebook.</p>
+            <input type="text" id="socialPost" placeholder="Type message for Zayana to broadcast..." style="width:90%; text-align:left;">
             <button onclick="postSocial()" style="width: auto; margin-top:10px;">Post to Worldwide Web</button>
         </div>
 
         <div class="ai-card">
-            <h3>Sister Architect</h3>
-            <p>Status: <strong>Running Daily Operations</strong></p>
-            <p>Interfaith Logic: <strong>Active</strong></p>
-            <p>Global Membership Fee: $1.00 (Director Adjustable)</p>
-        </div>
-
-        <div class="ai-card">
-            <h3>Ashadu</h3>
-            <p>Status: <strong>Core Strategic Background Processing</strong></p>
+            <h3>Sister Architect: Daily Operations</h3>
+            <p>Interfaith Logic Manifest: <strong>Active</strong>.</p>
+            <div class="fee-control">
+                <span>Global Membership Fee:</span>
+                <div>
+                    <button onclick="adjustFee(-0.1)" style="width: 40px; padding: 5px;">-</button>
+                    <span id="currentFee" style="font-size: 20px; margin: 0 15px;">$1.00</span>
+                    <button onclick="adjustFee(0.1)" style="width: 40px; padding: 5px;">+</button>
+                </div>
+            </div>
+            <p><small>*Fees are user-adjustable per Director's mandate.</small></p>
         </div>
 
         <button onclick="location.reload()" style="background:#000; width: auto; margin-top: 20px;">Lock Vault</button>
     </div>
 
     <script>
+        let fee = 1.00;
+
         function unlockZayana() {
             const key = document.getElementById('directorKey').value;
-            // Enter this exact key to unlock the dashboard
             if (key === "MASTER_KEY_2026") {
                 document.getElementById('vault-entrance').style.display = 'none';
                 document.getElementById('zayana-zone').style.display = 'block';
                 document.body.style.backgroundColor = "#f0f0f0";
             } else {
-                alert("Access Denied. Identity not verified.");
+                alert("Identity not verified.");
             }
         }
 
         function postSocial() {
             const msg = document.getElementById('socialPost').value;
-            alert("Zayana is broadcasting your message: " + msg);
+            alert("Zayana is broadcasting to global platforms: " + msg);
+        }
+
+        function adjustFee(amount) {
+            fee = Math.max(0, fee + amount);
+            document.getElementById('currentFee').innerText = "$" + fee.toFixed(2);
         }
     </script>
 

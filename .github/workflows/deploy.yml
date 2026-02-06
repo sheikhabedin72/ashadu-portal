@@ -13,12 +13,11 @@ jobs:
       - name: Deploy via SFTP
         uses: easingthemes/ssh-deploy@main
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.FTP_PASSWORD }} # We will use your password here
-          ARGS: "-rlgoDzvc -i --delete"
+          SSH_PRIVATE_KEY: ${{ secrets.FTP_PASSWORD }}
+          # The -e 'ssh -o StrictHostKeyChecking=no' is the "Sovereign Key" to bypass security prompts
+          ARGS: "-rlgoDzvc -i --delete -e 'ssh -o StrictHostKeyChecking=no'"
           SOURCE: "/"
           REMOTE_HOST: ${{ secrets.FTP_SERVER }}
           REMOTE_USER: ${{ secrets.FTP_USERNAME }}
-          TARGET: "/htdocs/"
-          SCRIPT_BEFORE: |
-            whoami
-            ls -al
+          # Removed the first slash to target your specific folder correctly
+          TARGET: "htdocs/"

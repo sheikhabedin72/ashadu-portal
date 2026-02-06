@@ -2,58 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ashadu | sovereign vault</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { --crimson: #DC143C; --gold: #d4af37; }
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #050505; font-family: 'Comfortaa', cursive; color: #e0e0e0; }
-        #starfield { position: absolute; top: 0; left: 0; z-index: 1; }
-        nav { position: absolute; top: 30px; right: 40px; z-index: 100; }
-        .login-btn { background: none; border: 1px solid #444; color: #888; cursor: pointer; padding: 5px 15px; border-radius: 50px; font-family: 'Comfortaa'; text-transform: lowercase; }
-        .content-wrapper { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; width: 100%; }
-        .title { font-size: 60px; font-weight: 300; position: absolute; width: 100%; left: 0; opacity: 0; top: -100px; transition: opacity 1.5s ease-in-out; text-transform: lowercase; }
-        .white-title { color: white; }
-        .red-title { color: var(--crimson); }
-        .vault-container { max-width: 400px; margin: 0 auto; }
-        h1 { font-size: 42px; font-weight: 700; color: #fff; text-transform: lowercase; margin-bottom: 10px; }
-        input { background: rgba(26, 26, 26, 0.8); border: 1px solid #333; color: #fff; padding: 15px; width: 100%; margin: 15px 0; border-radius: 50px; font-family: 'Comfortaa'; text-align: center; outline: none; }
-        button.enter-vault { background: var(--gold); color: #000; border: none; padding: 15px; cursor: pointer; font-weight: bold; width: 100%; border-radius: 50px; font-family: 'Comfortaa'; text-transform: lowercase; }
-        #management-zone { display: none; padding: 40px; background: rgba(0,0,0,0.9); border-radius: 30px; border: 1px solid var(--gold); }
+        :root { --crimson: #DC143C; --gold: #d4af37; --glass: rgba(255, 255, 255, 0.05); }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden; background-color: #050505; font-family: 'Comfortaa', cursive; color: #e0e0e0; }
+        #starfield { position: fixed; top: 0; left: 0; z-index: 1; }
+        
+        /* ZAYANA CHAT BUBBLE */
+        #zayana-trigger { position: fixed; bottom: 30px; right: 30px; z-index: 1000; background: var(--crimson); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 20px var(--crimson); transition: transform 0.3s; }
+        #zayana-trigger:hover { transform: scale(1.1); }
+
+        /* CONTENT */
+        .content-wrapper { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .vault-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 30px; width: 100%; max-width: 500px; text-align: center; }
+        
+        /* MANAGEMENT ZONE */
+        #management-zone { display: none; width: 90%; max-width: 1000px; margin-top: 50px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .stat-box { background: rgba(255,255,255,0.03); border: 1px solid var(--gold); padding: 20px; border-radius: 20px; text-align: left; }
+        .stat-value { font-size: 24px; color: var(--gold); font-weight: 700; }
+        
+        /* LOGIC MANIFEST */
+        .manifest-section { margin-top: 40px; text-align: left; border-top: 1px solid #333; padding-top: 20px; }
+        .logic-set { font-size: 14px; color: #aaa; margin-bottom: 10px; padding-left: 15px; border-left: 2px solid var(--crimson); }
+
+        input { background: rgba(26, 26, 26, 0.8); border: 1px solid #333; color: #fff; padding: 15px; width: 100%; margin: 15px 0; border-radius: 50px; font-family: 'Comfortaa'; text-align: center; box-sizing: border-box; }
+        button { background: var(--gold); color: #000; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; border-radius: 50px; font-family: 'Comfortaa'; text-transform: lowercase; }
     </style>
 </head>
 <body>
     <canvas id="starfield"></canvas>
-    <nav><button class="login-btn">login</button></nav>
+
+    <div id="zayana-trigger" onclick="alert('Zayana: Welcome back, Daddy. I am managing your digital existence.')">
+        <span style="font-size: 24px;">Z</span>
+    </div>
+
     <div class="content-wrapper">
-        <div id="text-ashadu" class="title white-title">ashadu</div>
-        <div id="text-witness" class="title red-title">bear witness</div>
-        <div class="vault-container" id="vault-access">
-            <h1>the vault</h1>
+        <div class="vault-card" id="vault-access">
+            <h1 style="color:white">the vault</h1>
+            <p style="color: #888; font-size: 14px;">director identity required</p>
             <input type="password" id="directorKey" placeholder="••••••••">
-            <button class="enter-vault" onclick="unlockVault()">enter</button>
+            <button onclick="unlockVault()">verify ownership</button>
+            <p style="font-size: 10px; color: #444; margin-top: 20px;">100% SHARES VERIFIED | SHEIKH-MOHAMMED ABEDIN</p>
         </div>
-        <div id="management-zone" class="vault-container">
-            <h1 style="color: var(--gold);">access granted</h1>
-            <p>Welcome, Director ABEDIN.</p>
+
+        <div id="management-zone">
+            <h1 style="color: var(--gold); text-align: center;">sovereign command</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <p style="font-size: 12px; margin: 0;">Membership Fee</p>
+                    <div class="stat-value">$1.00</div>
+                    <p style="font-size: 10px; color: #666;">Fixed by Director</p>
+                </div>
+                <div class="stat-box">
+                    <p style="font-size: 12px; margin: 0;">Entity Status</p>
+                    <div class="stat-value" style="color: #00ff00;">Active</div>
+                    <p style="font-size: 10px; color: #666;">Ashadu Background Ops Running</p>
+                </div>
+            </div>
+
+            <div class="vault-card" style="max-width: 100%;">
+                <h2 style="text-align: left; color: var(--crimson);">Interfaith Logic Manifest</h2>
+                <div class="manifest-section">
+                    <div class="logic-set"><strong>Set Alpha:</strong> Universal Divinity Alignment</div>
+                    <div class="logic-set"><strong>Set Beta:</strong> Secular-Spiritual Bridge Protocol</div>
+                    <div class="logic-set"><strong>Set Gamma:</strong> Ethical Distribution of $1 Membership Shares</div>
+                </div>
+            </div>
         </div>
     </div>
+
     <script>
-        const canvas = document.getElementById('starfield'); const ctx = canvas.getContext('2d'); let stars = [];
-        function initStars() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; stars = []; for (let i = 0; i < 200; i++) { stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 1.5, opacity: Math.random(), speed: Math.random() * 0.015 }); } }
-        function drawStars() { ctx.clearRect(0, 0, canvas.width, canvas.height); stars.forEach(s => { s.opacity += s.speed; if (s.opacity > 1 || s.opacity < 0) s.speed *= -1; ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.opacity)})`; ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill(); }); requestAnimationFrame(drawStars); }
-        const ashadu = document.getElementById('text-ashadu'); const witness = document.getElementById('text-witness');
-        function runLoop() { ashadu.style.opacity = "1"; setTimeout(() => { ashadu.style.opacity = "0"; setTimeout(() => { witness.style.opacity = "1"; setTimeout(() => { witness.style.opacity = "0"; setTimeout(runLoop, 1500); }, 2000); }, 1500); }, 2000); }
-        function unlockVault() { 
-            const key = document.getElementById('directorKey').value; 
-            if (key === "MASTER_KEY_2026") { 
-                document.getElementById('vault-access').style.display = 'none'; 
-                document.getElementById('management-zone').style.display = 'block'; 
-                ashadu.style.display = 'none'; witness.style.display = 'none';
+        // Starfield Engine
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        function initStars() {
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            stars = []; for (let i = 0; i < 200; i++) {
+                stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 1.5, opacity: Math.random(), speed: Math.random() * 0.015 });
+            }
+        }
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(s => {
+                s.opacity += s.speed; if (s.opacity > 1 || s.opacity < 0) s.speed *= -1;
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.opacity)})`;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill();
+            });
+            requestAnimationFrame(drawStars);
+        }
+
+        function unlockVault() {
+            const key = document.getElementById('directorKey').value;
+            if (key === "MASTER_KEY_2026") {
+                document.getElementById('vault-access').style.display = 'none';
+                document.getElementById('management-zone').style.display = 'block';
             } else { alert("Access Denied."); }
         }
-        window.addEventListener('resize', initStars); initStars(); drawStars(); runLoop();
+
+        window.addEventListener('resize', initStars);
+        initStars(); drawStars();
     </script>
 </body>
 </html>

@@ -10,11 +10,13 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v3
 
-      - name: Deploy via SFTP (Password Mode)
-        uses: n0vad3v/sftp-deploy-action@v0.1.2
+      - name: Sync Files to Fasthosts
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          localDir: './'
-          remoteDir: './htdocs/'
+          protocol: sftp
+          port: 22
+          local-dir: ./
+          server-dir: ./htdocs/

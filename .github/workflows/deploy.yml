@@ -1,4 +1,4 @@
-name: Push to Fasthosts
+name: Push to Fasthosts (SFTP)
 on:
   push:
     branches:
@@ -10,13 +10,15 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v3
 
-      - name: Push to Fasthosts (SFTP)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_SERVER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # SFTP is much more secure and uses the standard htdocs path
-          server-dir: ./htdocs/
-          protocol: sftp
           port: 22
+          # This tells the tool exactly where to put the files
+          local_path: './*'
+          remote_path: '/htdocs/'
+          # This ensures it doesn't get stuck on security prompts
+          args: '-o ConnectTimeout=5'

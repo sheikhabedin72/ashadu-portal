@@ -75,4 +75,71 @@
     <p><strong>Status:</strong> Interfaith Logic Sets Integrated</p>
     <p><strong>Current Directives:</strong> Universal Respect, Ethical Social Posting, Sovereign Financial Management.</p>
 </div></body>
-</html>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ashadu | sovereign vault</title>
+    <style>
+        body { background-color: #ffffff; color: #b8972e; font-family: 'Helvetica', sans-serif; text-align: center; padding: 50px; }
+        .vault-container { max-width: 450px; margin: auto; padding: 40px; border: 1px solid #eee; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .logo { width: 200px; margin-bottom: 20px; }
+        input { width: 80%; padding: 12px; margin: 10px 0; border: 1px solid #d4af37; border-radius: 5px; text-align: center; }
+        button { background: #d4af37; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 80%; }
+        
+        /* ZAYANA MANAGEMENT ZONE - Hidden by default */
+        #zayana-zone { display: none; max-width: 700px; margin: auto; text-align: left; padding: 20px; border: 2px solid #d4af37; border-radius: 15px; background: #fffdf9; }
+        .ai-card { background: #eee; padding: 10px; margin: 10px 0; border-radius: 8px; }
+        .footer { font-size: 10px; color: #aaa; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div id="vault-entrance" class="vault-container">
+        <img src="logo.png" alt="ASHADU" class="logo" onerror="this.style.border='1px solid #d4af37'; this.style.padding='10px'">
+        <h1>THE VAULT</h1>
+        <p>Enter Director Key</p>
+        <input type="password" id="directorKey" placeholder="••••••••">
+        <br>
+        <button onclick="unlockZayana()">VERIFY OWNERSHIP</button>
+        <div class="footer">100% OWNERSHIP: SHEIKH-MOHAMMED ABEDIN</div>
+    </div>
+
+    <div id="zayana-zone">
+        <h2 style="color: #000;">Sovereign Control Panel</h2>
+        <p>Welcome, Director <strong>SHEIKH-MOHAMMED ABEDIN</strong>.</p>
+        
+        <div class="ai-card">
+            <strong>ZAYANA:</strong> Managing your digital existence and social presence.
+            <br><input type="text" placeholder="Post via Zayana to TikTok/YouTube..." style="width:90%; text-align:left;">
+        </div>
+
+        <div class="ai-card">
+            <strong>SISTER ARCHITECT:</strong> Running daily operations and Interfaith Logic.
+            <br><small>Membership Fee: $1.00 (Adjustable)</small>
+        </div>
+
+        <div class="ai-card">
+            <strong>ASHADU:</strong> Global Strategy & Vision Background Processing.
+        </div>
+
+        <button onclick="location.reload()" style="background:#000; width: auto;">LOCK VAULT</button>
+    </div>
+
+    <script>
+        function unlockZayana() {
+            const key = document.getElementById('directorKey').value;
+            // Your Key must match this exactly
+            if (key === "MASTER_KEY_2026") {
+                // HIDE the vault, SHOW Zayana
+                document.getElementById('vault-entrance').style.display = 'none';
+                document.getElementById('zayana-zone').style.display = 'block';
+                document.body.style.backgroundColor = "#fafafa";
+            } else {
+                alert("Access Denied. Verification failed.");
+            }
+        }
+    </script>
+
+</body>
+</html></html>

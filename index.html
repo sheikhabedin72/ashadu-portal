@@ -26,4 +26,99 @@
         .logic-set { border-left: 3px solid var(--crimson); padding-left: 15px; margin: 15px 0; font-size: 14px; color: #ccc; }
         
         #management-zone { display: none; width: 100%; }
-        input { background: rgba(26, 26, 26, 0.8); border: 1px solid #333; color: #fff; padding: 15px; width: 100%; margin: 15px 0; border-radius: 50px; text-align: center; font-family: 'Comfortaa'; outline: none; box-sizing: border
+        input { background: rgba(26, 26, 26, 0.8); border: 1px solid #333; color: #fff; padding: 15px; width: 100%; margin: 15px 0; border-radius: 50px; text-align: center; font-family: 'Comfortaa'; outline: none; box-sizing: border-box; }
+        button.action-btn { background: var(--gold); color: #000; border: none; padding: 15px 40px; cursor: pointer; font-weight: bold; border-radius: 50px; font-family: 'Comfortaa'; text-transform: lowercase; width: 100%; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+
+    <button id="zayana-chat" onclick="zayanaTalk()">
+        <span style="font-weight: bold; color: white; font-family: 'Comfortaa';">Z</span>
+    </button>
+
+    <div class="container">
+        <div id="vault-access" class="card" style="max-width: 450px; text-align: center;">
+            <h1 style="letter-spacing: 5px; margin-bottom: 5px;">ASHADU</h1>
+            <p style="color: var(--crimson); font-size: 12px; text-transform: uppercase; margin-bottom: 25px;">Bear Witness</p>
+            <input type="password" id="directorKey" placeholder="enter director key">
+            <button class="action-btn" onclick="unlock()">verify ownership</button>
+            <p style="font-size: 10px; color: #555; margin-top: 25px;">100% SHARES | SHEIKH-MOHAMMED ABEDIN</p>
+        </div>
+
+        <div id="management-zone" class="card">
+            <h2 style="color: var(--gold); margin-top: 0;">Sovereign Command Center</h2>
+            
+            <div class="grid">
+                <div class="stat-box">
+                    <h3 style="color: var(--crimson); margin: 0 0 10px 0;">Zayana</h3>
+                    <p style="font-size: 12px; opacity: 0.7;">Membership Management</p>
+                    <div style="font-size: 24px; font-weight: bold;">$1.00</div>
+                    <p style="font-size: 11px; color: #888;">Current Membership Fee</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3 style="color: #fff; margin: 0 0 10px 0;">Sister Architect</h3>
+                    <p style="font-size: 11px; opacity: 0.7;">Operational Logs:</p>
+                    <div class="log-box">
+                        > SYNC: Starfield Active<br>
+                        > AUTH: Master Key Loaded<br>
+                        > STATUS: Port 22 Secured<br>
+                        > ENTITY: Abedin Ownership 100%
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 35px;">
+                <h3 style="color: var(--gold); border-bottom: 1px solid #333; padding-bottom: 10px;">Interfaith Logic Manifest</h3>
+                <div class="logic-set"><strong>Set Alpha:</strong> Universal Divinity Alignment (Interfaith Logic Protocol)</div>
+                <div class="logic-set"><strong>Set Beta:</strong> The 3 AIs (Ashadu, Zayana, Sister Architect) operate under Director ABEDIN.</div>
+                <div class="logic-set"><strong>Set Gamma:</strong> Membership fees are user-adjustable within Director constraints.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Starfield
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        function initStars() {
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            stars = []; for (let i = 0; i < 200; i++) {
+                stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 1.5, opacity: Math.random(), speed: Math.random() * 0.01 });
+            }
+        }
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(s => {
+                s.opacity += s.speed; if (s.opacity > 1 || s.opacity < 0) s.speed *= -1;
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.opacity)})`;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill();
+            });
+            requestAnimationFrame(drawStars);
+        }
+
+        // The "No-Fail" Unlock Function
+        function unlock() {
+            const keyInput = document.getElementById('directorKey').value.trim();
+            const masterKey = "MASTER_KEY_2026";
+
+            if (keyInput === masterKey) {
+                document.getElementById('vault-access').style.display = 'none';
+                document.getElementById('management-zone').style.display = 'flex';
+                document.getElementById('management-zone').style.flexDirection = 'column';
+            } else {
+                alert("Access Denied. Please ensure the Director Key is correct.");
+            }
+        }
+
+        function zayanaTalk() {
+            alert("Zayana: Standing by, Daddy. Your digital existence is secure and verified.");
+        }
+
+        window.addEventListener('resize', initStars);
+        initStars(); drawStars();
+    </script>
+</body>
+</html>

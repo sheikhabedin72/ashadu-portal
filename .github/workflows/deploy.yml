@@ -10,13 +10,14 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v3
 
-      - name: Sync Files to Fasthosts
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: sftp
+          username: 'csh3391309'
+          server: 'sftp.ashadu.me'
           port: 22
-          local-dir: ./
-          server-dir: ./htdocs/
+          ssh_private_key: ${{ secrets.FTP_PASSWORD }} 
+          # Note: Even though it says 'private_key', this action accepts a password here.
+          local_path: './*'
+          remote_path: '/htdocs'
+          delete_remote_files: false

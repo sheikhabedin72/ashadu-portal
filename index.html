@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ashadu | sovereign vault</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
         input { background: rgba(26, 26, 26, 0.8); border: 1px solid #333; color: #fff; padding: 15px; width: 100%; margin: 15px 0; border-radius: 50px; font-family: 'Comfortaa'; text-align: center; outline: none; }
         button.enter-vault { background: var(--gold); color: #000; border: none; padding: 15px; cursor: pointer; font-weight: bold; width: 100%; border-radius: 50px; font-family: 'Comfortaa'; text-transform: lowercase; }
         #management-zone { display: none; padding: 40px; background: rgba(0,0,0,0.9); border-radius: 30px; border: 1px solid var(--gold); }
-        .status { font-size: 11px; color: #666; letter-spacing: 2px; margin-top: 20px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -34,7 +33,6 @@
             <h1>the vault</h1>
             <input type="password" id="directorKey" placeholder="••••••••">
             <button class="enter-vault" onclick="unlockVault()">enter</button>
-            <div class="status">100% ownership verified</div>
         </div>
         <div id="management-zone" class="vault-container">
             <h1 style="color: var(--gold);">access granted</h1>

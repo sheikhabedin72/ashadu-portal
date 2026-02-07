@@ -147,6 +147,19 @@
     <footer>
         INTERFAITH LOGIC V1.0 | 100% INTELLECTUAL PROPERTY OF SHEIKH-MOHAMMED ABEDIN | MEMBERSHIP: $1 (DYNAMIC)
     </footer>
+    
+<script>
+document.querySelector('.btn').addEventListener('click', function() {
+    const id = document.querySelector('input[placeholder="Authorized ID"]').value;
+    const key = document.querySelector('input[placeholder="Key Protocol"]').value;
 
+    // You can change "SHEIKH" and "ASHADU2026" to anything you prefer
+    if (id === "SHEIKH" && key === "ASHADU2026") {
+        alert("Access Granted. Welcome, Sheikh-Mohammed Abedin.");
+        // This is where we will link your internal dashboard next
+    } else {
+        alert("Access Denied. Unauthorized Protocol.");
+    }
+});
 </body>
 </html>

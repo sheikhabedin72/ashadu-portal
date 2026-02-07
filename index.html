@@ -10,15 +10,12 @@
         header { padding: 30px; border-bottom: 1px solid var(--gold); background: linear-gradient(to bottom, #111, var(--obsidian)); text-align: center; }
         .branding { font-size: 2.5rem; letter-spacing: 8px; color: var(--gold); text-shadow: 0 0 15px var(--glow); }
         .owner-tag { font-size: 0.7rem; letter-spacing: 3px; margin-top: 10px; opacity: 0.8; }
-        
         .engine-status { display: flex; justify-content: center; gap: 30px; margin: 40px 0; flex-wrap: wrap; }
         .ai-node { border: 1px solid #333; padding: 20px; width: 200px; background: rgba(255,255,255,0.02); text-align: center; }
         .ai-node h3 { color: var(--gold); margin: 0 0 5px 0; }
         .pulse { height: 8px; width: 8px; background: #00ff00; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 10px #00ff00; }
-        
         #canvas { width: 85%; height: 400px; margin: 0 auto; border: 2px dashed #444; display: flex; align-items: center; justify-content: center; position: relative; background: #080808; }
         .buildship-overlay { position: absolute; top: 10px; right: 10px; font-size: 0.6rem; color: #666; }
-        
         .controls { text-align: center; margin-top: 30px; padding-bottom: 50px; }
         input { padding: 15px; width: 300px; background: #111; border: 1px solid var(--gold); color: white; outline: none; }
         button { padding: 15px 30px; background: var(--gold); border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
@@ -26,33 +23,37 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="branding">SHOHEB.SPACE</div>
+        <div class="owner-tag">SOLE CREATOR & FOUNDER: SHEIKH-MOHAMMED ABEDIN</div>
+    </header>
 
-<header>
-    <div class="branding">SHOHEB.SPACE</div>
-    <div class="owner-tag">SOLE CREATOR & FOUNDER: SHEIKH-MOHAMMED ABEDIN</div>
-</header>
+    <div class="engine-status">
+        <div class="ai-node"><h3>ASHADU</h3><span class="pulse"></span><small>CORE ACTIVE</small></div>
+        <div class="ai-node"><h3>ZAYANA</h3><span class="pulse"></span><small>EXISTENCE SYNC</small></div>
+        <div class="ai-node"><h3>S. ARCHITECT</h3><span class="pulse"></span><small>OPS LOGGED</small></div>
+    </div>
 
-<div class="engine-status">
-    <div class="ai-node"><h3>ASHADU</h3><span class="pulse"></span><small>CORE ACTIVE</small></div>
-    <div class="ai-node"><h3>ZAYANA</h3><span class="pulse"></span><small>EXISTENCE SYNC</small></div>
-    <div class="ai-node"><h3>S. ARCHITECT</h3><span class="pulse"></span><small>OPS LOGGED</small></div>
-</div>
+    <div id="canvas">
+        <div class="buildship-overlay">PRIVATE BUILDSHIP CLONE V1.0</div>
+        <div id="output-view">AWAITING VISION COMMAND...</div>
+    </div>
 
-<div id="canvas">
-    <div class="buildship-overlay">PRIVATE BUILDSHIP CLONE V1.0</div>
-    <div id="output-view">AWAITING VISION COMMAND...</div>
-</div>
+    <div class="controls">
+        <input type="text" id="cmd" placeholder="Enter Visionary Prompt...">
+        <button onclick="runEngine()">RUN ENGINE</button>
+    </div>
 
-<div class="controls">
-    <input type="text" id="cmd" placeholder="Enter Visionary Prompt...">
-    <button onclick="runEngine()">RUN ENGINE</button>
-</div>
-
-<script>
-    function runEngine() {
-        const cmd = document.getElementById('cmd').value;
-        const display = document.getElementById('output-view');
-        if(!cmd) return;
-        display.innerHTML = "SYSTEM: SHOHEB.SPACE PROCESSING VISION...";
-        setTimeout(() => {
-            display.innerHTML = `<div style="text-align:center
+    <script>
+        function runEngine() {
+            const cmd = document.getElementById('cmd').value;
+            const display = document.getElementById('output-view');
+            if(!cmd) return;
+            display.innerHTML = "SYSTEM: SHOHEB.SPACE PROCESSING VISION...";
+            setTimeout(function() {
+                display.innerHTML = '<div style="text-align:center">Synthesizing: "' + cmd + '"<br><span style="color:#c5a059; font-weight:bold;">ASHADU CORE ONLINE</span></div>';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

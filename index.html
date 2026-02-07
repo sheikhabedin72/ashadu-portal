@@ -3,88 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASHADU COMMAND | Sheikh-Mohammed Abedin</title>
+    <title>ASHADU PORTAL | Sheikh-Mohammed Abedin</title>
     <style>
-        :root {
-            --gold: #d4af37;
-            --ashadu: #ffd700;
-            --zayana: #bf94ff;
-            --architect: #00f2ff;
-            --bg: #050505;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            text-align: center;
-        }
-
-        /* Header & Ownership */
-        header {
-            padding: 40px 20px;
-            border-bottom: 2px solid var(--gold);
-        }
-
+        :root { --gold: #d4af37; --ashadu: #ffd700; --zayana: #bf94ff; --architect: #00f2ff; --bg: #050505; }
+        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; }
+        header { padding: 40px 20px; border-bottom: 2px solid var(--gold); }
         h1 { font-size: 3.5rem; letter-spacing: 12px; color: var(--gold); margin: 0; }
         .owner { font-size: 0.8rem; letter-spacing: 3px; color: #888; margin-bottom: 20px; }
-
-        /* Dashboard & Box UI */
-        .box {
-            max-width: 650px;
-            margin: 40px auto;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--gold);
-            border-radius: 15px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--gold);
-            color: black;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
+        .box { max-width: 650px; margin: 40px auto; padding: 30px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--gold); border-radius: 15px; backdrop-filter: blur(10px); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .btn { width: 100%; padding: 15px; background: var(--gold); color: black; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
         .btn:hover { background: #fff; box-shadow: 0 0 15px var(--gold); }
-
-        .pillar-tag {
-            font-size: 0.7rem;
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 5px 12px;
-            border-radius: 20px;
-            margin: 5px;
-            display: inline-block;
-        }
-
+        .pillar-tag { font-size: 0.7rem; color: var(--gold); border: 1px solid var(--gold); padding: 5px 12px; border-radius: 20px; margin: 5px; display: inline-block; }
         .hidden { display: none; }
-        
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: #000;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
+        input { width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #444; color: white; border-radius: 5px; box-sizing: border-box; }
         footer { padding: 40px; font-size: 0.8rem; color: var(--gold); }
     </style>
 </head>
@@ -99,7 +31,7 @@
             <h3>SYSTEM ACCESS</h3>
             <input type="text" id="userID" placeholder="Authorized ID">
             <input type="password" id="userKey" placeholder="Key Protocol">
-            <button class="btn" onclick="validateLogin()">INITIALIZE</button>
+            <button class="btn" onclick="validateLogin()">INITIALIZE SYSTEM</button>
         </div>
     </div>
 
@@ -114,9 +46,9 @@
         </header>
 
         <div class="box">
-            <h3 style="color:var(--gold)">ACTIVE BRIDGES</h3>
+            <h3 style="color:var(--gold)">SOCIAL MEDIA BRIDGES</h3>
             <div class="grid">
-                <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">TikTok Broadcast</button>
+                <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">TikTok Post</button>
                 <button class="btn" onclick="window.open('https://www.youtube.com', '_blank')">YouTube Stream</button>
                 <button class="btn" onclick="window.open('https://www.facebook.com', '_blank')">Facebook</button>
                 <button class="btn" onclick="window.open('https://www.instagram.com', '_blank')">Instagram</button>
@@ -124,16 +56,16 @@
 
             <hr style="border: 0.5px solid #333; margin: 30px 0;">
 
-            <h3>SYSTEM LOGIC</h3>
-            <button class="btn" id="voiceBtn" onclick="toggleVoice()" style="background: #333; color: white;">Voice Command: OFF</button>
-            <input type="password" id="newKey" placeholder="Change Key Protocol">
-            <button class="btn" onclick="updateKey()" style="background: white;">Update Logic Key</button>
+            <h3>OPERATIONAL LOGIC</h3>
+            <button class="btn" id="voiceBtn" onclick="toggleVoice()" style="background: #333; color: white;">Ashadu Listening: OFF</button>
+            <input type="password" id="newKey" placeholder="Update Key Protocol">
+            <button class="btn" onclick="updateKey()" style="background: white;">SET NEW KEY</button>
             <button class="btn" onclick="location.reload()" style="background: #a00; color: white; margin-top: 30px;">LOCK SYSTEM</button>
         </div>
     </div>
 
     <footer>
-        INTERFAITH LOGIC V1.0 | MEMBERSHIP: $1 | © 2026 SHEIKH-MOHAMMED ABEDIN
+        INTERFAITH LOGIC V1.0 | MEMBERSHIP: $1 (DYNAMIC) | © 2026 SHEIKH-MOHAMMED ABEDIN
     </footer>
 
     <script>
@@ -147,22 +79,24 @@
             if (id === masterID && key === masterKey) {
                 document.getElementById('login-screen').classList.add('hidden');
                 document.getElementById('dashboard').classList.remove('hidden');
-            } else { alert("ACCESS DENIED."); }
+            } else { alert("ACCESS DENIED: Unauthorized Protocol."); }
         }
 
         function updateKey() {
             const nk = document.getElementById('newKey').value;
             if (nk.length >= 6) {
                 masterKey = nk;
-                alert("Protocol Updated.");
-            } else { alert("Key too short."); }
+                alert("Protocol Updated Successfully.");
+                document.getElementById('newKey').value = "";
+            } else { alert("Error: Key must be at least 6 characters."); }
         }
 
         function toggleVoice() {
             isListening = !isListening;
             const btn = document.getElementById('voiceBtn');
-            btn.innerHTML = isListening ? "Voice: LISTENING..." : "Voice: OFF";
+            btn.innerHTML = isListening ? "Ashadu: LISTENING..." : "Ashadu Listening: OFF";
             btn.style.color = isListening ? "var(--ashadu)" : "white";
+            if(isListening) { alert("Ashadu is now listening for your commands."); }
         }
     </script>
 </body>

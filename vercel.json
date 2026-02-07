@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "ashadu-portal",
+  "name": "shoheb-space-engine",
   "rewrites": [
     { "source": "/generate", "destination": "/api/ashadu-logic" }
   ],
@@ -8,7 +8,8 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Owner", "value": "SHEIKH-MOHAMMED ABEDIN" }
+        { "key": "X-Owner", "value": "SHEIKH-MOHAMMED ABEDIN" },
+        { "key": "X-Namespace", "value": "SHOHEB.SPACE" }
       ]
     }
   ]

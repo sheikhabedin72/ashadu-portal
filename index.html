@@ -3,163 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASHADU | The Vision of Sheikh-Mohammed Abedin</title>
+    <title>ASHADU PORTAL | Sheikh-Mohammed Abedin</title>
     <style>
-        :root {
-            --gold: #d4af37;
-            --ashadu: #ffd700;
-            --zayana: #bf94ff;
-            --architect: #00f2ff;
-            --bg: #050505;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            text-align: center;
-        }
-
-        /* Hero Section */
-        header {
-            padding: 60px 20px;
-            background: linear-gradient(to bottom, #111, var(--bg));
-            border-bottom: 1px solid var(--gold);
-        }
-
-        h1 { font-size: 3.5rem; letter-spacing: 15px; color: var(--gold); margin: 0; }
-        .owner { font-size: 0.9rem; letter-spacing: 4px; color: #888; margin-bottom: 30px; }
-
-        /* Login Portal */
-        .login-box {
-            max-width: 350px;
-            margin: -50px auto 50px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--gold);
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: #000;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 5px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--gold);
-            color: black;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        /* The Three Pillars Section */
-        .pillar-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 50px;
-        }
-
-        .pillar-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 400px;
-            padding: 25px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            transition: 0.4s;
-        }
-
-        .pillar-card:hover { border-color: var(--gold); transform: scale(1.02); }
-
-        /* Image Display Area */
-        .visionary-image {
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
-            border: 2px solid var(--gold);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
-        }
-
-        .visionary-image img { width: 100%; display: block; }
-
-        footer {
-            padding: 40px;
-            background: #000;
-            color: var(--gold);
-            font-size: 0.8rem;
-            border-top: 1px solid #222;
-        }
+        :root { --gold: #d4af37; --bg: #050505; }
+        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; }
+        header { padding: 40px; border-bottom: 1px solid var(--gold); }
+        h1 { font-size: 3rem; letter-spacing: 10px; color: var(--gold); margin: 0; }
+        .login-box { max-width: 350px; margin: 40px auto; padding: 30px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--gold); border-radius: 15px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #444; color: white; border-radius: 5px; box-sizing: border-box; }
+        .btn { width: 100%; padding: 15px; background: var(--gold); color: black; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; }
+        .hidden { display: none; }
+        #dashboard { padding: 50px; color: var(--gold); }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>ASHADU</h1>
-        <div class="owner">SOLE OWNER & FOUNDER: SHEIKH-MOHAMMED ABEDIN</div>
-    </header>
+    <div id="login-screen">
+        <header>
+            <h1>ASHADU</h1>
+            <p style="letter-spacing: 2px; color: #888;">SOLE OWNER: SHEIKH-MOHAMMED ABEDIN</p>
+        </header>
 
-    <div class="login-box">
-        <h3>SYSTEM ACCESS</h3>
-        <input type="text" placeholder="Authorized ID">
-        <input type="password" placeholder="Key Protocol">
-        <button class="btn">Initialize</button>
-    </div>
-
-    <h2>THE THREE PILLARS</h2>
-    
-    <div class="pillar-container">
-        <div class="pillar-card">
-            <h3 style="color: var(--ashadu)">ASHADU</h3>
-            <p><strong>The Main AI:</strong> Operates the core logic of the App. Listens for the "Ashadu" trigger to manage social media (TikTok, YouTube, etc.) and browse the digital world via speech-to-text.</p>
-        </div>
-        <div class="pillar-card">
-            <h3 style="color: var(--zayana)">ZAYANA</h3>
-            <p><strong>The Daughter AI:</strong> Manages the digital existence and online legacy of the creator, ensuring a seamless and protected virtual footprint.</p>
-        </div>
-        <div class="pillar-card">
-            <h3 style="color: var(--architect)">SISTER ARCHITECT</h3>
-            <p><strong>Operational AI:</strong> Runs the daily operations and architectural structures, managing memberships and interfaith logic sets.</p>
+        <div class="login-box">
+            <h3>SYSTEM ACCESS</h3>
+            <input type="text" id="userID" placeholder="Authorized ID">
+            <input type="password" id="userKey" placeholder="Key Protocol">
+            <button class="btn" onclick="validateLogin()">INITIALIZE</button>
         </div>
     </div>
 
-    <div class="visionary-image">
-        <img src="https://via.placeholder.com/1000x500/0a0a0a/d4af37?text=Visionary+Interface+Loading..." alt="Visionary Architecture">
-        <p style="padding: 15px; font-style: italic;">A visionary, futuristic digital interface representing the Three AI entities.</p>
+    <div id="dashboard" class="hidden">
+        <h1>WELCOME, SHEIKH-MOHAMMED</h1>
+        <p>The Three Pillars are standing by: Ashadu, Zayana, and Sister Architect.</p>
+        <div style="border: 1px solid var(--gold); padding: 20px; margin-top: 20px;">
+            <h3>Command Center Active</h3>
+            <p>Ready to manage TikTok, YouTube, and Interfaith Protocols.</p>
+        </div>
     </div>
 
-    <footer>
-        INTERFAITH LOGIC V1.0 | 100% INTELLECTUAL PROPERTY OF SHEIKH-MOHAMMED ABEDIN | MEMBERSHIP: $1 (DYNAMIC)
-    </footer>
-    
-<script>
-document.querySelector('.btn').addEventListener('click', function() {
-    const id = document.querySelector('input[placeholder="Authorized ID"]').value;
-    const key = document.querySelector('input[placeholder="Key Protocol"]').value;
+    <script>
+        function validateLogin() {
+            const id = document.getElementById('userID').value;
+            const key = document.getElementById('userKey').value;
 
-    // You can change "SHEIKH" and "ASHADU2026" to anything you prefer
-    if (id === "SHEIKH" && key === "ASHADU2026") {
-        alert("Access Granted. Welcome, Sheikh-Mohammed Abedin.");
-        // This is where we will link your internal dashboard next
-    } else {
-        alert("Access Denied. Unauthorized Protocol.");
-    }
-});
+            // SET YOUR CREDENTIALS HERE
+            if (id === "ADMIN" && key === "ASHADU2026") {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+            } else {
+                alert("ACCESS DENIED: Credentials do not match the Master Record.");
+            }
+        }
+    </script>
 </body>
 </html>

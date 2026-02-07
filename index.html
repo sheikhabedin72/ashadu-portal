@@ -1,91 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASHADU COMMAND | Sheikh-Mohammed Abedin</title>
-    <style>
-        :root { --gold: #d4af37; --bg: #050505; --panel: rgba(255,255,255,0.07); }
-        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; }
-        header { padding: 40px; border-bottom: 1px solid var(--gold); }
-        h1 { font-size: 3rem; letter-spacing: 10px; color: var(--gold); margin: 0; }
-        .box { max-width: 400px; margin: 40px auto; padding: 30px; background: var(--panel); border: 1px solid var(--gold); border-radius: 15px; backdrop-filter: blur(10px); }
-        input { width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #444; color: white; border-radius: 5px; box-sizing: border-box; }
-        .btn { width: 100%; padding: 15px; background: var(--gold); color: black; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
-        .hidden { display: none; }
-        .pillar-tag { font-size: 0.8rem; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 20px; margin: 5px; display: inline-block; }
-    </style>
-</head>
-<body>
-
-    <div id="login-screen">
-        <header>
-            <h1>ASHADU</h1>
-            <p style="letter-spacing: 2px; color: #888;">SOLE OWNER: SHEIKH-MOHAMMED ABEDIN</p>
-        </header>
-        <div class="box">
-            <h3>SYSTEM ACCESS</h3>
-            <input type="text" id="userID" placeholder="Authorized ID">
-            <input type="password" id="userKey" placeholder="Key Protocol">
-            <button class="btn" onclick="validateLogin()">INITIALIZE</button>
-        </div>
-    </div>
-
-    <div id="dashboard" class="hidden">
-        <header>
-            <h1 style="font-size: 2rem;">COMMAND CENTER</h1>
-            <div>
-                <span class="pillar-tag">ASHADU ACTIVE</span>
-                <span class="pillar-tag">ZAYANA ACTIVE</span>
-                <span class="pillar-tag">ARCHITECT ACTIVE</span>
-            </div>
-        </header>
-
-        <div class="box">
-            <h3 style="color:var(--gold)">RESET PROTOCOL</h3>
-            <p style="font-size: 0.8rem; color: #aaa;">Update your master Key Protocol below.</p>
-            <input type="password" id="newKey" placeholder="Enter New Key">
-            <button class="btn" onclick="updateKey()" style="background: white;">UPDATE KEY</button>
-            <hr style="border: 0.5px solid #333; margin: 20px 0;">
-            <button class="btn" onclick="logout()" style="background: #444; color: white;">LOCK SYSTEM</button>
-        </div>
-    </div>
-
-    <script>
-        // Master storage for credentials (Default settings)
-        let masterID = "ADMIN";
-        let masterKey = "ASHADU2026";
-
-        function validateLogin() {
-            const id = document.getElementById('userID').value;
-            const key = document.getElementById('userKey').value;
-
-            if (id === masterID && key === masterKey) {
-                document.getElementById('login-screen').classList.add('hidden');
-                document.getElementById('dashboard').classList.remove('hidden');
-            } else {
-                alert("ACCESS DENIED: Credentials do not match the Master Record.");
-            }
-        }
-
-        function updateKey() {
-            const newKey = document.getElementById('newKey').value;
-            if (newKey.length < 6) {
-                alert("Protocol Error: New key must be at least 6 characters.");
-            } else {
-                masterKey = newKey;
-                alert("SUCCESS: Key Protocol Updated to " + masterKey);
-                document.getElementById('newKey').value = "";
-            }
-        }
-
-        function logout() {
-            document.getElementById('login-screen').classList.remove('hidden');
-            document.getElementById('dashboard').classList.add('hidden');
-            document.getElementById('userKey').value = "";
-        }
-    </script>
-    <div id="dashboard" class="hidden">
+<div id="dashboard" class="hidden">
     <header>
         <h1 style="font-size: 2rem; color: var(--gold);">COMMAND CENTER</h1>
         <div class="status-bar">
@@ -111,5 +24,4 @@
         <button class="btn" onclick="showReset()" style="background: transparent; border: 1px solid #444; color: #888;">Manage Key Protocol</button>
         <button class="btn" onclick="logout()" style="background: #a00; color: white;">LOCK SYSTEM</button>
     </div>
-</div></body>
-</html>
+</div>

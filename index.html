@@ -3,89 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYANA AI | Visual Mastery Command</title>
+    <title>AYANA AI | Visual Mastery</title>
     <style>
-        :root { --royal-gold: #c5a059; --deep-obsidian: #0a0a0b; --interface-accent: #00d4ff; }
-        body { background: var(--deep-obsidian); color: #e0e0e0; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        :root { --gold: #c5a059; --obsidian: #0a0a0b; --active: #00f2ff; }
+        body { background: var(--obsidian); color: white; font-family: 'Inter', sans-serif; margin: 0; }
+        header { padding: 20px 40px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+        .branding h1 { font-size: 1.5rem; letter-spacing: 8px; color: var(--gold); margin: 0; }
+        .container { display: flex; height: calc(100vh - 80px); }
         
-        header { padding: 30px; border-bottom: 1px solid rgba(197, 160, 89, 0.3); text-align: left; display: flex; justify-content: space-between; align-items: center; }
-        .branding h1 { font-size: 1.8rem; letter-spacing: 5px; color: var(--royal-gold); margin: 0; }
-        .ownership-tag { font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 2px; }
-
-        .main-container { max-width: 1200px; margin: 40px auto; padding: 20px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; }
+        /* Left Sidebar Controls */
+        .sidebar { width: 300px; background: #111; border-right: 1px solid #222; padding: 20px; }
+        .mode-btn { width: 100%; padding: 15px; margin-bottom: 10px; background: #1a1a1c; border: 1px solid #333; color: #888; text-align: left; cursor: pointer; border-radius: 4px; }
+        .mode-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(197, 160, 89, 0.1); }
         
-        /* Control Panel */
-        .control-panel { background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.2); padding: 25px; border-radius: 5px; }
-        .module-tab { padding: 15px; background: #1a1a1c; border-left: 3px solid var(--royal-gold); margin-bottom: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .module-tab:hover { background: #252527; }
-
-        /* Creative Canvas */
-        .creative-canvas { background: #000; border: 1px solid #333; border-radius: 5px; min-height: 600px; display: flex; flex-direction: column; position: relative; }
-        .canvas-header { padding: 15px; border-bottom: 1px solid #222; font-size: 0.8rem; color: #888; display: flex; justify-content: space-between; }
+        /* Main Creative Engine */
+        .engine-room { flex-grow: 1; display: flex; flex-direction: column; background: #050505; }
+        .canvas { flex-grow: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .canvas img { max-width: 80%; max-height: 80%; box-shadow: 0 0 40px rgba(0,0,0,0.5); border: 1px solid #222; }
         
-        .prompt-area { position: absolute; bottom: 0; width: 100%; background: #111; padding: 20px; box-sizing: border-box; border-top: 1px solid #222; }
-        textarea { width: 100%; background: transparent; border: 1px solid #444; color: #fff; padding: 15px; border-radius: 4px; resize: none; font-family: inherit; }
-        .gen-btn { background: var(--royal-gold); color: #000; border: none; padding: 12px 30px; font-weight: bold; margin-top: 10px; cursor: pointer; width: 100%; text-transform: uppercase; }
-
-        .visual-output { flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        #preview-img { max-width: 100%; border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
+        .prompt-bar { padding: 30px; background: #0f0f11; border-top: 1px solid #222; }
+        .input-group { display: flex; gap: 15px; background: #000; padding: 10px; border: 1px solid #333; border-radius: 8px; }
+        textarea { flex-grow: 1; background: transparent; border: none; color: white; resize: none; padding: 10px; outline: none; }
+        .gen-btn { background: var(--gold); color: black; border: none; padding: 0 30px; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+        
+        /* Loading State */
+        .loader { display: none; color: var(--gold); font-family: monospace; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="branding">
-        <h1>AYANA AI</h1>
-        <div class="ownership-tag">Sole Owner: Sheikh-Mohammed Abedin</div>
-    </div>
-    <div class="status">
-        <span style="color: var(--interface-accent); font-size: 0.8rem;">● SYSTEM OPERATIONAL</span>
-    </div>
+    <div class="branding"><h1>AYANA AI</h1></div>
+    <div style="font-size: 0.7rem; color: #444;">ENGINE: ASHADU-VISUAL-V1 | OWNER: SHEIKH-MOHAMMED ABEDIN</div>
 </header>
 
-<div class="main-container">
-    <div class="control-panel">
-        <h3 style="color: var(--royal-gold); margin-top: 0;">VISUAL MASTERY</h3>
-        <div class="module-tab">Hyper-Realism (V7)</div>
-        <div class="module-tab">Perfect Typography</div>
-        <div class="module-tab">Contextual Edit</div>
-        
-        <div style="margin-top: 50px; font-size: 0.75rem; color: #555;">
-            PROJECT: AYANA-01<br>
-            CORE: ASHADU ENGINE<br>
-            IP: 100% SECURE
-        </div>
+<div class="container">
+    <div class="sidebar">
+        <h4 style="color: #444; text-transform: uppercase; font-size: 0.7rem;">Visual Modules</h4>
+        <button class="mode-btn active" onclick="setMode('hyper')">Hyper-Realism V7</button>
+        <button class="mode-btn" onclick="setMode('typo')">Perfect Typography</button>
+        <button class="mode-btn" onclick="setMode('edit')">Contextual Edit</button>
     </div>
 
-    <div class="creative-canvas">
-        <div class="canvas-header">
-            <span>CANVAS: 1024x1024</span>
-            <span>AYANA AI CREATOR MODE</span>
-        </div>
-        
-        <div class="visual-output" id="output">
-            <div id="placeholder" style="color: #333;">Initialize Creative Stream...</div>
+    <div class="engine-room">
+        <div class="canvas" id="canvas">
+            <div id="status-text" style="color: #222;">AWAITING COMMAND...</div>
+            <div class="loader" id="loader">SYNTHESIZING VISION...</div>
         </div>
 
-        <div class="prompt-area">
-            <textarea id="promptInput" rows="3" placeholder="Describe the vision for Ayana to create..."></textarea>
-            <button class="gen-btn" onclick="generateVision()">Generate Visionary Asset</button>
+        <div class="prompt-bar">
+            <div class="input-group">
+                <textarea id="prompt" rows="2" placeholder="Describe your vision..."></textarea>
+                <button class="gen-btn" onclick="triggerAyana()">Generate</button>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    function generateVision() {
-        const prompt = document.getElementById('promptInput').value;
-        const output = document.getElementById('output');
-        if(prompt.length < 5) { alert("Please provide a deeper vision."); return; }
+    let currentMode = 'hyper';
+
+    function setMode(mode) {
+        currentMode = mode;
+        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+
+    function triggerAyana() {
+        const prompt = document.getElementById('prompt').value;
+        const loader = document.getElementById('loader');
+        const status = document.getElementById('status-text');
         
-        output.innerHTML = '<div style="color: var(--royal-gold);">AYANA IS SYNTHESIZING...</div>';
-        
-        // This is where we bridge to the Image Generation Tool
+        if(!prompt) return alert("Vision prompt required.");
+
+        status.style.display = 'none';
+        loader.style.display = 'block';
+
+        // AYANA Logic: Pre-processing for "Top 40" Quality
+        let refinedPrompt = prompt;
+        if(currentMode === 'hyper') refinedPrompt += " --highly detailed, 8k, hyper-realistic, cinematic lighting, shot on 35mm lens--";
+        if(currentMode === 'typo') refinedPrompt += " --focus on typography, clean text rendering, vector style, sharp edges--";
+
+        console.log("Ayana is sending to core:", refinedPrompt);
+
+        // Simulation of the API Return (Final step will be the API key link)
         setTimeout(() => {
-            alert("Ayana is processing your request via the Visual Mastery Engine.");
-        }, 500);
+            loader.style.display = 'none';
+            alert("AYANA: Phase 1 Generation Complete. Image data sent to your device browser.");
+        }, 2000);
     }
 </script>
 

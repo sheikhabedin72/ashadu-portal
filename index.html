@@ -3,79 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to ASHADU! 🌟</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>AYANA AI | Visual Mastery Command</title>
     <style>
-        :root {
-            --vibrant-cyan: #00e5ff;
-            --happy-gold: #ffcc00;
-            --soft-white: #ffffff;
-            --joy-pink: #ff4081;
-        }
+        :root { --royal-gold: #c5a059; --deep-obsidian: #0a0a0b; --interface-accent: #00d4ff; }
+        body { background: var(--deep-obsidian); color: #e0e0e0; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        
+        header { padding: 30px; border-bottom: 1px solid rgba(197, 160, 89, 0.3); text-align: left; display: flex; justify-content: space-between; align-items: center; }
+        .branding h1 { font-size: 1.8rem; letter-spacing: 5px; color: var(--royal-gold); margin: 0; }
+        .ownership-tag { font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 2px; }
 
-        body {
-            margin: 0; padding: 0;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            font-family: 'Quicksand', sans-serif;
-            color: var(--soft-white);
-            text-align: center;
-            overflow-x: hidden;
-        }
+        .main-container { max-width: 1200px; margin: 40px auto; padding: 20px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; }
+        
+        /* Control Panel */
+        .control-panel { background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.2); padding: 25px; border-radius: 5px; }
+        .module-tab { padding: 15px; background: #1a1a1c; border-left: 3px solid var(--royal-gold); margin-bottom: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .module-tab:hover { background: #252527; }
 
-        /* Essential Global Animations */
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        @keyframes pulse-gold {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
-            50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 215, 0, 1); }
-        }
-        @keyframes glow-text {
-            0%, 100% { text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700; }
-            50% { text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700; }
-        }
+        /* Creative Canvas */
+        .creative-canvas { background: #000; border: 1px solid #333; border-radius: 5px; min-height: 600px; display: flex; flex-direction: column; position: relative; }
+        .canvas-header { padding: 15px; border-bottom: 1px solid #222; font-size: 0.8rem; color: #888; display: flex; justify-content: space-between; }
+        
+        .prompt-area { position: absolute; bottom: 0; width: 100%; background: #111; padding: 20px; box-sizing: border-box; border-top: 1px solid #222; }
+        textarea { width: 100%; background: transparent; border: 1px solid #444; color: #fff; padding: 15px; border-radius: 4px; resize: none; font-family: inherit; }
+        .gen-btn { background: var(--royal-gold); color: #000; border: none; padding: 12px 30px; font-weight: bold; margin-top: 10px; cursor: pointer; width: 100%; text-transform: uppercase; }
 
-        /* Vocal Commander Animations */
-        @keyframes pulse-orb {
-            0%, 100% { transform: scale(1); opacity: 0.6; box-shadow: 0 0 5px var(--vibrant-cyan); }
-            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 15px var(--vibrant-cyan); }
-        }
-        @keyframes heard-flash {
-            0% { transform: scale(1); background-color: var(--happy-gold); box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); }
-            20% { transform: scale(1.6); background-color: #ffffff; box-shadow: 0 0 30px 10px rgba(255, 204, 0, 0.6); }
-            100% { transform: scale(1.3); background-color: var(--happy-gold); box-shadow: 0 0 10px rgba(255, 204, 0, 0.4); }
-        }
-
-        .shimmering-font {
-            animation: glow-text 3s ease-in-out infinite;
-        }
-        .pulse-gold {
-            animation: pulse-gold 2s infinite ease-in-out;
-        }
+        .visual-output { flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        #preview-img { max-width: 100%; border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
     </style>
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "@google/genai": "https://esm.sh/@google/genai@1.40.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <div id="root">
-        <div class="flex flex-col items-center justify-center min-h-screen">
-            <h1 class="text-6xl font-['Fredoka_One'] text-[var(--happy-gold)] drop-shadow-[3px_3px_0px_var(--joy-pink)]">ASHADU ✨</h1>
-            <p class="mt-4 text-xl opacity-80">Initialising Sovereign Link...</p>
+
+<header>
+    <div class="branding">
+        <h1>AYANA AI</h1>
+        <div class="ownership-tag">Sole Owner: Sheikh-Mohammed Abedin</div>
+    </div>
+    <div class="status">
+        <span style="color: var(--interface-accent); font-size: 0.8rem;">● SYSTEM OPERATIONAL</span>
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="control-panel">
+        <h3 style="color: var(--royal-gold); margin-top: 0;">VISUAL MASTERY</h3>
+        <div class="module-tab">Hyper-Realism (V7)</div>
+        <div class="module-tab">Perfect Typography</div>
+        <div class="module-tab">Contextual Edit</div>
+        
+        <div style="margin-top: 50px; font-size: 0.75rem; color: #555;">
+            PROJECT: AYANA-01<br>
+            CORE: ASHADU ENGINE<br>
+            IP: 100% SECURE
         </div>
     </div>
-<script type="module" src="/index.tsx"></script>
+
+    <div class="creative-canvas">
+        <div class="canvas-header">
+            <span>CANVAS: 1024x1024</span>
+            <span>AYANA AI CREATOR MODE</span>
+        </div>
+        
+        <div class="visual-output" id="output">
+            <div id="placeholder" style="color: #333;">Initialize Creative Stream...</div>
+        </div>
+
+        <div class="prompt-area">
+            <textarea id="promptInput" rows="3" placeholder="Describe the vision for Ayana to create..."></textarea>
+            <button class="gen-btn" onclick="generateVision()">Generate Visionary Asset</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function generateVision() {
+        const prompt = document.getElementById('promptInput').value;
+        const output = document.getElementById('output');
+        if(prompt.length < 5) { alert("Please provide a deeper vision."); return; }
+        
+        output.innerHTML = '<div style="color: var(--royal-gold);">AYANA IS SYNTHESIZING...</div>';
+        
+        // This is where we bridge to the Image Generation Tool
+        setTimeout(() => {
+            alert("Ayana is processing your request via the Visual Mastery Engine.");
+        }, 500);
+    }
+</script>
+
 </body>
 </html>

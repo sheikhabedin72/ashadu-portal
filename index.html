@@ -22,7 +22,6 @@
     </style>
 </head>
 <body>
-
     <div id="login-screen">
         <header>
             <h1>ASHADU</h1>
@@ -45,33 +44,23 @@
                 <span class="pillar-tag">ARCHITECT: ACTIVE</span>
             </div>
         </header>
-
         <div class="box">
             <h3 style="color:var(--gold)">ASHADU VOICE TRANSCRIBER</h3>
             <div id="speech-output">Click 'Activate' and speak...</div>
             <button class="btn" id="voiceBtn" onclick="toggleListening()" style="background: #333; color: white;">Activate Ashadu Listening</button>
-            
             <div class="grid">
-                <button class="btn" onclick="postToSocial('TikTok')">Post to TikTok</button>
-                <button class="btn" onclick="postToSocial('YouTube')">Post to YouTube</button>
+                <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">Post to TikTok</button>
+                <button class="btn" onclick="window.open('https://www.youtube.com', '_blank')">Post to YouTube</button>
             </div>
-            
             <hr style="border: 0.5px solid #333; margin: 30px 0;">
-            
             <button class="btn" onclick="location.reload()" style="background: #a00; color: white;">LOCK SYSTEM</button>
         </div>
     </div>
-
-    <footer>
-        INTERFAITH LOGIC V1.0 | © 2026 SHEIKH-MOHAMMED ABEDIN
-    </footer>
+    <footer>INTERFAITH LOGIC V1.0 | © 2026 SHEIKH-MOHAMMED ABEDIN</footer>
 
     <script>
         let masterID = "ADMIN";
         let masterKey = "ASHADU2026";
-        const output = document.getElementById('speech-output');
-        
-        // Login Logic
         function validateLogin() {
             const id = document.getElementById('userID').value;
             const key = document.getElementById('userKey').value;
@@ -80,33 +69,18 @@
                 document.getElementById('dashboard').classList.remove('hidden');
             } else { alert("ACCESS DENIED."); }
         }
-
-        // Voice Logic (Speech to Text)
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         if (SpeechRecognition) {
             const recognition = new SpeechRecognition();
             recognition.continuous = true;
             recognition.onresult = (event) => {
                 const transcript = event.results[event.results.length - 1][0].transcript;
-                output.innerText = "Ashadu heard: " + transcript;
+                document.getElementById('speech-output').innerText = "Ashadu heard: " + transcript;
             };
-
             function toggleListening() {
                 recognition.start();
                 document.getElementById('voiceBtn').innerText = "ASHADU IS LISTENING...";
                 document.getElementById('voiceBtn').style.color = "var(--ashadu)";
-            }
-        } else {
-            output.innerText = "Speech API not supported in this browser.";
-        }
-
-        function postToSocial(platform) {
-            const text = output.innerText.replace("Ashadu heard: ", "");
-            if(text === "Click 'Activate' and speak...") {
-                alert("Please speak a command first.");
-            } else {
-                alert("Sending to " + platform + ": " + text);
-                // Here we will connect the API keys for the social platforms
             }
         }
     </script>

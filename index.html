@@ -1,127 +1,51 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYANA AI | Visual Mastery</title>
+    <title>SHOHEB.SPACE | THE SUPREME ENGINE</title>
     <style>
-        :root { --gold: #c5a059; --obsidian: #0a0a0b; --active: #00f2ff; }
-        body { background: var(--obsidian); color: white; font-family: 'Inter', sans-serif; margin: 0; }
-        header { padding: 20px 40px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
-        .branding h1 { font-size: 1.5rem; letter-spacing: 8px; color: var(--gold); margin: 0; }
-        .container { display: flex; height: calc(100vh - 80px); }
+        :root { --gold: #c5a059; --obsidian: #050505; --glow: rgba(197, 160, 89, 0.4); }
+        body { background: var(--obsidian); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; overflow-x: hidden; }
+        header { padding: 30px; border-bottom: 1px solid var(--gold); background: linear-gradient(to bottom, #111, var(--obsidian)); }
+        .branding { font-size: 2.5rem; letter-spacing: 8px; color: var(--gold); text-shadow: 0 0 15px var(--glow); }
+        .owner-tag { font-size: 0.7rem; letter-spacing: 3px; margin-top: 10px; opacity: 0.8; }
         
-        /* Left Sidebar Controls */
-        .sidebar { width: 300px; background: #111; border-right: 1px solid #222; padding: 20px; }
-        .mode-btn { width: 100%; padding: 15px; margin-bottom: 10px; background: #1a1a1c; border: 1px solid #333; color: #888; text-align: left; cursor: pointer; border-radius: 4px; }
-        .mode-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(197, 160, 89, 0.1); }
+        .engine-status { display: flex; justify-content: center; gap: 30px; margin: 40px 0; }
+        .ai-node { border: 1px solid #333; padding: 20px; width: 200px; background: rgba(255,255,255,0.02); }
+        .ai-node h3 { color: var(--gold); margin-bottom: 5px; }
+        .pulse { height: 8px; width: 8px; background: #00ff00; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 10px #00ff00; }
         
-        /* Main Creative Engine */
-        .engine-room { flex-grow: 1; display: flex; flex-direction: column; background: #050505; }
-        .canvas { flex-grow: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .canvas img { max-width: 80%; max-height: 80%; box-shadow: 0 0 40px rgba(0,0,0,0.5); border: 1px solid #222; }
-        
-        .prompt-bar { padding: 30px; background: #0f0f11; border-top: 1px solid #222; }
-        .input-group { display: flex; gap: 15px; background: #000; padding: 10px; border: 1px solid #333; border-radius: 8px; }
-        textarea { flex-grow: 1; background: transparent; border: none; color: white; resize: none; padding: 10px; outline: none; }
-        .gen-btn { background: var(--gold); color: black; border: none; padding: 0 30px; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
-        
-        /* Loading State */
-        .loader { display: none; color: var(--gold); font-family: monospace; letter-spacing: 2px; }
+        #canvas { width: 80%; height: 400px; margin: 0 auto; border: 2px dashed #444; display: flex; align-items: center; justify-content: center; position: relative; }
+        .buildship-overlay { position: absolute; top: 10px; right: 10px; font-size: 0.6rem; color: #666; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="branding"><h1>AYANA AI</h1></div>
-    <div style="font-size: 0.7rem; color: #444;">ENGINE: ASHADU-VISUAL-V1 | OWNER: SHEIKH-MOHAMMED ABEDIN</div>
+    <div class="branding">SHOHEB.SPACE</div>
+    <div class="owner-tag">SOLE CREATOR & FOUNDER: SHEIKH-MOHAMMED ABEDIN</div>
 </header>
 
-<div class="container">
-    <div class="sidebar">
-        <h4 style="color: #444; text-transform: uppercase; font-size: 0.7rem;">Visual Modules</h4>
-        <button class="mode-btn active" onclick="setMode('hyper')">Hyper-Realism V7</button>
-        <button class="mode-btn" onclick="setMode('typo')">Perfect Typography</button>
-        <button class="mode-btn" onclick="setMode('edit')">Contextual Edit</button>
-    </div>
+<div class="engine-status">
+    <div class="ai-node"><h3>ASHADU</h3><span class="pulse"></span><small>CORE ACTIVE</small></div>
+    <div class="ai-node"><h3>ZAYANA</h3><span class="pulse"></span><small>EXISTENCE SYNC</small></div>
+    <div class="ai-node"><h3>S. ARCHITECT</h3><span class="pulse"></span><small>OPS LOGGED</small></div>
+</div>
 
-    <div class="engine-room">
-        <div class="canvas" id="canvas">
-            <div id="status-text" style="color: #222;">AWAITING COMMAND...</div>
-            <div class="loader" id="loader">SYNTHESIZING VISION...</div>
-        </div>
+<div id="canvas">
+    <div class="buildship-overlay">PRIVATE BUILDSHIP CLONE V1.0</div>
+    <div id="output-view">AWAITING VISION COMMAND...</div>
+</div>
 
-        <div class="prompt-bar">
-            <div class="input-group">
-                <textarea id="prompt" rows="2" placeholder="Describe your vision..."></textarea>
-                <button class="gen-btn" onclick="triggerAyana()">Generate</button>
-            </div>
-        </div>
-    </div>
+<div style="margin-top: 30px;">
+    <input type="text" id="cmd" placeholder="Enter Visionary Prompt..." style="padding: 15px; width: 300px; background: #111; border: 1px solid var(--gold); color: white;">
+    <button onclick="runEngine()" style="padding: 15px 30px; background: var(--gold); border: none; font-weight: bold; cursor: pointer;">RUN ENGINE</button>
 </div>
 
 <script>
-    let currentMode = 'hyper';
-
-    function setMode(mode) {
-        currentMode = mode;
-        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
-    }
-
-    function triggerAyana() {
-        const prompt = document.getElementById('prompt').value;
-        const loader = document.getElementById('loader');
-        const status = document.getElementById('status-text');
-        
-        if(!prompt) return alert("Vision prompt required.");
-
-        status.style.display = 'none';
-        loader.style.display = 'block';
-
-        // AYANA Logic: Pre-processing for "Top 40" Quality
-        let refinedPrompt = prompt;
-        if(currentMode === 'hyper') refinedPrompt += " --highly detailed, 8k, hyper-realistic, cinematic lighting, shot on 35mm lens--";
-        if(currentMode === 'typo') refinedPrompt += " --focus on typography, clean text rendering, vector style, sharp edges--";
-
-        console.log("Ayana is sending to core:", refinedPrompt);
-
-        // Simulation of the API Return (Final step will be the API key link)
+    function runEngine() {
+        const cmd = document.getElementById('cmd').value;
+        document.getElementById('output-view').innerHTML = "SYSTEM: SHOHEB.SPACE PROCESSING VISION...";
         setTimeout(() => {
-            loader.style.display = 'none';
-            alert("AYANA: Phase 1 Generation Complete. Image data sent to your device browser.");
-        }, 2000);
-    }
-<script>
-    let currentMode = 'hyper';
-
-    function setMode(mode) {
-        currentMode = mode;
-        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
-    }
-
-    async function triggerAyana() {
-        const prompt = document.getElementById('prompt').value;
-        const loader = document.getElementById('loader');
-        const canvas = document.getElementById('canvas');
-        
-        if(!prompt) return alert("Vision prompt required.");
-
-        // Clear previous and show loader
-        canvas.innerHTML = '<div class="loader" style="display:block">SYNTHESIZING VISION...</div>';
-
-        // AYANA Logic: Synthesis
-        // Using a professional Unsplash Source bridge for the 'Ramadhan Card' test
-        const searchTerms = encodeURIComponent(prompt + " luxury gold ramadhan");
-        const imageUrl = `https://source.unsplash.com/featured/1024x1024?${searchTerms}`;
-
-        // Simulate professional AI processing time
-        setTimeout(() => {
-            canvas.innerHTML = `<img src="${imageUrl}" id="preview-img" alt="Ayana Vision">`;
-            alert("AYANA: Visual Mastery Synthesis Complete.");
-        }, 3000);
-    }
-</script>
-</body>
-</html>
+            alert("ASHADU: Command received. Vision being synthesized in

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "ashadu-portal",
+  "rewrites": [
+    { "source": "/generate", "destination": "/api/ashadu-logic" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Owner", "value": "SHEIKH-MOHAMMED ABEDIN" }
+      ]
+    }
+  ]
+}

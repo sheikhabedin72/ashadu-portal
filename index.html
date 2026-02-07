@@ -1,27 +1,191 @@
-<div id="dashboard" class="hidden">
-    <header>
-        <h1 style="font-size: 2rem; color: var(--gold);">COMMAND CENTER</h1>
-        <div class="status-bar">
-            <span class="pillar-tag">ASHADU: LISTENING</span>
-            <span class="pillar-tag">ZAYANA: SECURE</span>
-            <span class="pillar-tag">ARCHITECT: OPERATIONAL</span>
-        </div>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASHADU PORTAL | Sheikh-Mohammed Abedin</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --ashadu: #ffd700;
+            --zayana: #bf94ff;
+            --architect: #00f2ff;
+            --bg: #050505;
+        }
 
-    <div class="box" style="max-width: 800px;">
-        <h3 style="color:var(--gold)">ACTIVE MODULES</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">TikTok Broadcast</button>
-            <button class="btn" onclick="window.open('https://www.youtube.com', '_blank')">YouTube Stream</button>
-            
-            <button class="btn" onclick="window.open('https://github.com/sheikhabedin72/ashadu-portal', '_blank')" style="background:#444; color:white;">GitHub Repository</button>
-            <button class="btn" onclick="alert('Ashadu Speech-to-Text: Initializing Listening Mode...')">Voice Command</button>
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 40px 20px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        h1 { font-size: 3.5rem; letter-spacing: 15px; color: var(--gold); margin: 0; }
+        .owner { font-size: 0.8rem; letter-spacing: 3px; color: #888; margin-bottom: 20px; }
+
+        /* Shared Box Styling */
+        .box {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #000;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: #fff; box-shadow: 0 0 15px var(--gold); }
+
+        /* Dashboard UI */
+        .hidden { display: none; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .pillar-tag { font-size: 0.7rem; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 20px; margin: 5px; display: inline-block; }
+
+        /* Pillars Section */
+        .pillar-card {
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        footer { padding: 40px; font-size: 0.8rem; color: var(--gold); background: #000; }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <header>
+            <h1>ASHADU</h1>
+            <div class="owner">SOLE OWNER & FOUNDER: SHEIKH-MOHAMMED ABEDIN</div>
+        </header>
+
+        <div class="box">
+            <h3>SYSTEM ACCESS</h3>
+            <input type="text" id="userID" placeholder="Authorized ID">
+            <input type="password" id="userKey" placeholder="Key Protocol">
+            <button class="btn" onclick="validateLogin()">INITIALIZE</button>
         </div>
 
-        <hr style="border: 0.5px solid #333; margin: 30px 0;">
-        
-        <h3 style="color:var(--gold)">SYSTEM UTILITIES</h3>
-        <button class="btn" onclick="showReset()" style="background: transparent; border: 1px solid #444; color: #888;">Manage Key Protocol</button>
-        <button class="btn" onclick="logout()" style="background: #a00; color: white;">LOCK SYSTEM</button>
+        <div style="padding: 20px;">
+            <div class="pillar-card">
+                <strong style="color: var(--ashadu)">ASHADU:</strong> The Main AI. Runs in background, manages Social Media.
+            </div>
+            <div class="pillar-card">
+                <strong style="color: var(--zayana)">ZAYANA:</strong> Digital Existence Manager.
+            </div>
+            <div class="pillar-card">
+                <strong style="color: var(--architect)">SISTER ARCHITECT:</strong> Daily Operations & Logic.
+            </div>
+        </div>
     </div>
-</div>
+
+    <div id="dashboard" class="hidden">
+        <header>
+            <h1 style="font-size: 2rem;">COMMAND CENTER</h1>
+            <div>
+                <span class="pillar-tag">ASHADU: ACTIVE</span>
+                <span class="pillar-tag">ZAYANA: ACTIVE</span>
+                <span class="pillar-tag">ARCHITECT: ACTIVE</span>
+            </div>
+        </header>
+
+        <div class="box">
+            <h3>ACTIVE BRIDGES</h3>
+            <div class="grid">
+                <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">TikTok Post</button>
+                <button class="btn" onclick="window.open('https://www.youtube.com', '_blank')">YouTube Stream</button>
+                <button class="btn" onclick="window.open('https://www.facebook.com', '_blank')">Facebook</button>
+                <button class="btn" onclick="window.open('https://www.instagram.com', '_blank')">Instagram</button>
+            </div>
+
+            <hr style="border: 0.5px solid #333; margin: 30px 0;">
+            
+            <h3>RECORDS & PROTOCOL</h3>
+            <button class="btn" id="voiceBtn" onclick="toggleListening()" style="background: #444; color: white;">Voice: OFF</button>
+            <input type="password" id="newKey" placeholder="Update Key Protocol">
+            <button class="btn" onclick="updateKey()" style="background: white;">SET NEW KEY</button>
+            <button class="btn" onclick="logout()" style="background: #a00; color: white; margin-top: 30px;">LOCK SYSTEM</button>
+        </div>
+    </div>
+
+    <footer>
+        INTERFAITH LOGIC SETS ACTIVE | MEMBERSHIP: $1 (DYNAMIC) | © 2026 SHEIKH-MOHAMMED ABEDIN
+    </footer>
+
+    <script>
+        // MASTER LOGIC
+        let masterID = "ADMIN";
+        let masterKey = "ASHADU2026";
+        let isListening = false;
+
+        function validateLogin() {
+            const id = document.getElementById('userID').value;
+            const key = document.getElementById('userKey').value;
+            if (id === masterID && key === masterKey) {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+            } else {
+                alert("ACCESS DENIED: Unauthorized Protocol.");
+            }
+        }
+
+        function updateKey() {
+            const nk = document.getElementById('newKey').value;
+            if (nk.length >= 6) {
+                masterKey = nk;
+                alert("Key Protocol Updated Successfully.");
+                document.getElementById('newKey').value = "";
+            } else {
+                alert("Key must be at least 6 characters.");
+            }
+        }
+
+        function toggleListening() {
+            isListening = !isListening;
+            const btn = document.getElementById('voiceBtn');
+            btn.innerHTML = isListening ? "Voice: LISTENING..." : "Voice: OFF";
+            btn.style.color = isListening ? "var(--ashadu)" : "white";
+        }
+
+        function logout() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>

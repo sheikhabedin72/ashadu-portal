@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASHADU PORTAL | Sheikh-Mohammed Abedin</title>
+    <title>ASHADU COMMAND | Sheikh-Mohammed Abedin</title>
     <style>
         :root {
             --gold: #d4af37;
@@ -21,36 +21,31 @@
             text-align: center;
         }
 
-        /* Hero Section */
+        /* Header & Ownership */
         header {
             padding: 40px 20px;
             border-bottom: 2px solid var(--gold);
         }
 
-        h1 { font-size: 3.5rem; letter-spacing: 15px; color: var(--gold); margin: 0; }
+        h1 { font-size: 3.5rem; letter-spacing: 12px; color: var(--gold); margin: 0; }
         .owner { font-size: 0.8rem; letter-spacing: 3px; color: #888; margin-bottom: 20px; }
 
-        /* Shared Box Styling */
+        /* Dashboard & Box UI */
         .box {
-            max-width: 600px;
+            max-width: 650px;
             margin: 40px auto;
             padding: 30px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
             border: 1px solid var(--gold);
             border-radius: 15px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
         }
 
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: #000;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 5px;
-            box-sizing: border-box;
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .btn {
@@ -62,29 +57,35 @@
             border: none;
             cursor: pointer;
             text-transform: uppercase;
-            margin-top: 10px;
             transition: 0.3s;
         }
 
         .btn:hover { background: #fff; box-shadow: 0 0 15px var(--gold); }
 
-        /* Dashboard UI */
-        .hidden { display: none; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .pillar-tag { font-size: 0.7rem; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 20px; margin: 5px; display: inline-block; }
-
-        /* Pillars Section */
-        .pillar-card {
-            padding: 15px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            margin-top: 20px;
-            text-align: left;
-            font-size: 0.9rem;
+        .pillar-tag {
+            font-size: 0.7rem;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
         }
 
-        footer { padding: 40px; font-size: 0.8rem; color: var(--gold); background: #000; }
+        .hidden { display: none; }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #000;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        footer { padding: 40px; font-size: 0.8rem; color: var(--gold); }
     </style>
 </head>
 <body>
@@ -92,26 +93,13 @@
     <div id="login-screen">
         <header>
             <h1>ASHADU</h1>
-            <div class="owner">SOLE OWNER & FOUNDER: SHEIKH-MOHAMMED ABEDIN</div>
+            <div class="owner">SOLE OWNER: SHEIKH-MOHAMMED ABEDIN</div>
         </header>
-
         <div class="box">
             <h3>SYSTEM ACCESS</h3>
             <input type="text" id="userID" placeholder="Authorized ID">
             <input type="password" id="userKey" placeholder="Key Protocol">
             <button class="btn" onclick="validateLogin()">INITIALIZE</button>
-        </div>
-
-        <div style="padding: 20px;">
-            <div class="pillar-card">
-                <strong style="color: var(--ashadu)">ASHADU:</strong> The Main AI. Runs in background, manages Social Media.
-            </div>
-            <div class="pillar-card">
-                <strong style="color: var(--zayana)">ZAYANA:</strong> Digital Existence Manager.
-            </div>
-            <div class="pillar-card">
-                <strong style="color: var(--architect)">SISTER ARCHITECT:</strong> Daily Operations & Logic.
-            </div>
         </div>
     </div>
 
@@ -126,30 +114,29 @@
         </header>
 
         <div class="box">
-            <h3>ACTIVE BRIDGES</h3>
+            <h3 style="color:var(--gold)">ACTIVE BRIDGES</h3>
             <div class="grid">
-                <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">TikTok Post</button>
+                <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">TikTok Broadcast</button>
                 <button class="btn" onclick="window.open('https://www.youtube.com', '_blank')">YouTube Stream</button>
                 <button class="btn" onclick="window.open('https://www.facebook.com', '_blank')">Facebook</button>
                 <button class="btn" onclick="window.open('https://www.instagram.com', '_blank')">Instagram</button>
             </div>
 
             <hr style="border: 0.5px solid #333; margin: 30px 0;">
-            
-            <h3>RECORDS & PROTOCOL</h3>
-            <button class="btn" id="voiceBtn" onclick="toggleListening()" style="background: #444; color: white;">Voice: OFF</button>
-            <input type="password" id="newKey" placeholder="Update Key Protocol">
-            <button class="btn" onclick="updateKey()" style="background: white;">SET NEW KEY</button>
-            <button class="btn" onclick="logout()" style="background: #a00; color: white; margin-top: 30px;">LOCK SYSTEM</button>
+
+            <h3>SYSTEM LOGIC</h3>
+            <button class="btn" id="voiceBtn" onclick="toggleVoice()" style="background: #333; color: white;">Voice Command: OFF</button>
+            <input type="password" id="newKey" placeholder="Change Key Protocol">
+            <button class="btn" onclick="updateKey()" style="background: white;">Update Logic Key</button>
+            <button class="btn" onclick="location.reload()" style="background: #a00; color: white; margin-top: 30px;">LOCK SYSTEM</button>
         </div>
     </div>
 
     <footer>
-        INTERFAITH LOGIC SETS ACTIVE | MEMBERSHIP: $1 (DYNAMIC) | © 2026 SHEIKH-MOHAMMED ABEDIN
+        INTERFAITH LOGIC V1.0 | MEMBERSHIP: $1 | © 2026 SHEIKH-MOHAMMED ABEDIN
     </footer>
 
     <script>
-        // MASTER LOGIC
         let masterID = "ADMIN";
         let masterKey = "ASHADU2026";
         let isListening = false;
@@ -160,31 +147,22 @@
             if (id === masterID && key === masterKey) {
                 document.getElementById('login-screen').classList.add('hidden');
                 document.getElementById('dashboard').classList.remove('hidden');
-            } else {
-                alert("ACCESS DENIED: Unauthorized Protocol.");
-            }
+            } else { alert("ACCESS DENIED."); }
         }
 
         function updateKey() {
             const nk = document.getElementById('newKey').value;
             if (nk.length >= 6) {
                 masterKey = nk;
-                alert("Key Protocol Updated Successfully.");
-                document.getElementById('newKey').value = "";
-            } else {
-                alert("Key must be at least 6 characters.");
-            }
+                alert("Protocol Updated.");
+            } else { alert("Key too short."); }
         }
 
-        function toggleListening() {
+        function toggleVoice() {
             isListening = !isListening;
             const btn = document.getElementById('voiceBtn');
             btn.innerHTML = isListening ? "Voice: LISTENING..." : "Voice: OFF";
             btn.style.color = isListening ? "var(--ashadu)" : "white";
-        }
-
-        function logout() {
-            location.reload();
         }
     </script>
 </body>
